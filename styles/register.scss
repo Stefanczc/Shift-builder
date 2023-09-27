@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+:root {
+    --lightBlue: #0ab3ff;
+}
+body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    background: #1c2630;
+}
+form {
+    background: #29313c;
+    padding: 3em 5em 3em;
+    text-align: center;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+}
+form > h2 {
+    color: #fff;
+    margin-bottom: 2em;
+}
+.input-control {
+    position: relative;
+    min-width: 20em;
+    margin-bottom: 2em;
+}
+.input-control > input {
+    position: relative;
+    width: 100%;
+    padding: 0.35em 0;
+    background: transparent;
+    border: none;
+    border-bottom: 0.10em solid #999;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    &::placeholder {
+        padding-left: 0.1em;
+    }
+    &:focus {
+        border-bottom: 0.10em solid var(--lightBlue);
+        &::placeholder {
+            color: var(--lightBlue);
+        }
+    }
+}
+.register {
+    background: var(--lightBlue);
+    border: none;
+    padding: 1em;
+    border-radius: 0.10em;
+    color: #1c2630;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2em;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+        letter-spacing: 0.40em;
+    }
+}
+.loginText {
+    color: #fff;
+}
+.loginBtn {
+    color: var(--lightBlue);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    &:hover {
+        color: gold;
+    }
+}
+.input-control.success input {
+    border-color: #09c372;
+}
+.input-control.error input {
+    border-color: #ff3860;
+}
+.input-control .error {
+    height: 1em; 
+    color: #ff3860; 
+    font-size: 0.9em; 
+    margin-top: 0.2em; 
+}
