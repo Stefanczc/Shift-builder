@@ -11,7 +11,7 @@
 
 <body>
 
-    <form action="" id="form">
+    <form action="" id="signUpForm" class="signUpForm">
         <h2>Create your account</h2>
         <div class="input-control">
             <input type="text" id="username" placeholder="Username">
@@ -41,10 +41,22 @@
             <input type="number" id="age" placeholder="Age">
             <div class="error"></div>
         </div>
-        <input type="submit" class="register" id="register" value="Register">
+        <button class="registerBtn clickBtn" id="registerBtn">Register</button>
         <p class="loginText" id="loginText">Already have an account ?
-            <a href="" class="loginBtn" id="loginBtn">Login</a>
+            <a href="" class="loginLink btn" id="loginLink">Login</a>
         </p>
+    </form>
+
+    <form action="" class="signInForm" id="signInForm">
+        <h2>Add your credentials</h2>
+        <div class="input-control">
+            <input type="email" placeholder="Email" id="signInEmail">
+        </div>
+        <div class="input-control">
+            <input type="password" placeholder="Password" id="signInPassword">
+        </div>
+        <button value="Sign In" class="submitBtn clickBtn" id="signInBtn"> Log In </button>
+        <a href="" id="backToRegBtn" class="loginLink btn">Back to Registration</a>
     </form>
 
 

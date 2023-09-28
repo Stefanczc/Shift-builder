@@ -28,7 +28,7 @@ form > h2 {
 .input-control {
     position: relative;
     min-width: 20em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .input-control > input {
     position: relative;
@@ -56,7 +56,7 @@ form > h2 {
         }
     }
 }
-.register {
+.clickBtn {
     background: var(--lightBlue);
     border: none;
     padding: 1em;
@@ -65,7 +65,7 @@ form > h2 {
     font-size: 1.05em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 2em;
+    margin: 1em 0 2em; 
     color: #fff;
     cursor: pointer;
     transition: 0.5s;
@@ -76,7 +76,7 @@ form > h2 {
 .loginText {
     color: #fff;
 }
-.loginBtn {
+.btn {
     color: var(--lightBlue);
     text-decoration: none;
     text-transform: uppercase;
@@ -96,4 +96,12 @@ form > h2 {
     color: #ff3860; 
     font-size: 0.9em; 
     margin-top: 0.2em; 
+}
+.signInForm {
+    z-index: -1;
+    position: absolute;
+}
+
+.signUpFormHide {
+    display: none;
 }
