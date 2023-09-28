@@ -9,7 +9,10 @@ const signUpForm = document.getElementById('signUpForm'),
     registerBtn = document.getElementById('registerBtn'),
     loginLink = document.getElementById('loginLink');
 
-const signInForm = document.getElementById('signInForm');    
+const signInForm = document.getElementById('signInForm');
+const signInBtn = document.getElementById('signInBtn');    
+const showPassword = document.getElementById('showPassword');
+
 
 const users = JSON.parse(localStorage.getItem('users')) || [];
 const user = {};
@@ -195,8 +198,21 @@ loginLink.addEventListener('click', (e) => {
 
 signInBtn.addEventListener('click', signInUser);
 
-
-  
+showPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    const signInPassword = document.getElementById('signInPassword');
+    const tooltipPassword = document.getElementById('tooltipPassword');
+    
+    if (signInPassword.type === 'password') {
+        signInPassword.type = 'text'
+        tooltipPassword.innerText = 'Hide password';
+    }
+    else {
+        signInPassword.type = 'password';
+        tooltipPassword.innerText = 'Show password';
+    }
+    
+})
 
 
 
