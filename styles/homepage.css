@@ -14,7 +14,7 @@ body {
   background: black;
 }
 
-.navContainer {
+.nav {
   display: flex;
   column-gap: 1em;
   background-color: var(--lightBlue);
@@ -23,25 +23,25 @@ body {
   text-align: center;
 }
 
-.navContainer > li {
+.nav > li {
   color: #fff;
   list-style-type: none;
   display: grid;
   align-items: center;
   width: 9em;
 }
-.navContainer > li:nth-of-type(5) {
+.nav > li:nth-of-type(5) {
   margin-left: auto;
 }
 
-.navContainer > li > a {
+.nav > li > a {
   color: #fff;
   border-radius: 0.25em;
   padding: 0.93em 0;
   text-decoration: none;
   transition: 0.2s;
 }
-.navContainer > li > a:hover {
+.nav > li > a:hover {
   background-color: black;
   color: var(--lightBlue);
   scale: 1.1;
@@ -61,17 +61,11 @@ table {
   color: #fff;
 }
 
-th {
-  border-bottom: 1px solid var(--lightBlue);
-  padding: 1em;
-  text-align: center;
-  font-size: 1.25em;
-}
-
+th,
 td {
   border-bottom: 1px solid var(--lightBlue);
-  text-align: center;
   padding: 1em;
+  text-align: center;
 }
 
 tr:hover {

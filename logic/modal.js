@@ -1,4 +1,5 @@
 import { Shift } from './addShift.js'
+import { LocalStorage } from './localStorage.js';
 
 const modal = document.getElementById('shiftModal');
 const openModalBtn = document.getElementById('openModalBtn');
@@ -31,14 +32,14 @@ shiftForm.addEventListener('submit', (event) => {
     const hourlyWage = document.getElementById('hourlyWage').value;
     const workplace = document.getElementById('workplace').value;
 
-    const users = JSON.parse(localStorage.getItem('users'));
+    const users = LocalStorage.getLocalStorage();
 
     const newShift = new Shift(shiftName, date, startTime, endTime, hourlyWage, workplace);
     
     const user = users.find((elem) => elem.isLogged === true);
     user.shifts.push(newShift);
    
-    localStorage.setItem('users', JSON.stringify(users));
+    LocalStorage.setLocalStorage(users);
 
     const table = document.getElementById('table');
     const row = table.insertRow(-1);
@@ -64,9 +65,9 @@ window.addEventListener('load', () => {
 });
 
 function loadAndDisplayShifts() {
-    const users = JSON.parse(localStorage.getItem('users'));
+    const users = LocalStorage.getLocalStorage();
 
-    // Assuming there is a logged-in user
+    // Is there a logged in user ?
     const user = users.find((elem) => elem.isLogged === true);
     const shifts = user.shifts;
 

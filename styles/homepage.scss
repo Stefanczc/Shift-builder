@@ -11,7 +11,8 @@
 body {
     background: black;
 }
-.navContainer {
+// [----------------------navigation bar-------------------] //
+.nav {
     display: flex;
     column-gap: 1em;
     background-color: var(--lightBlue);
@@ -19,7 +20,7 @@ body {
     height: 3em;
     text-align: center;
 }
-.navContainer > li {
+.nav > li {
     color: #fff;
     list-style-type: none;
     &:nth-of-type(5) {
@@ -30,7 +31,7 @@ body {
     width: 9em;
     
 }
-.navContainer > li > a {
+.nav > li > a {
     color: #fff;
     border-radius: 0.25em;
     padding: 0.93em 0;
@@ -47,6 +48,7 @@ main {
     margin-top: 5em;
     place-items: center;
 }
+// [----------------------shifts table-------------------] //
 table {
     border: 1px solid var(--lightBlue);
     padding: 0.5em 2em;
@@ -54,18 +56,11 @@ table {
     background: var(--darkBlue);
     color: #fff;
 }
-th {
-    border-bottom: 1px solid var(--lightBlue);
-    // border-right: 1px solid var(--lightBlue);
-    // border-left: 1px solid var(--lightBlue);
-    padding: 1em;
-    text-align: center;
-    font-size: 1.25em;
-}
+th,
 td {
     border-bottom: 1px solid var(--lightBlue);
-    text-align: center;
     padding: 1em;
+    text-align: center;
 }
 tr {
     &:hover {

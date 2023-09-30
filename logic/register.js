@@ -1,3 +1,5 @@
+import { LocalStorage } from "./localStorage.js";
+
 const signUpForm = document.getElementById('signUpForm'),
     username = document.getElementById('username'),
     email = document.getElementById('email'),
@@ -13,9 +15,7 @@ const signInForm = document.getElementById('signInForm');
 const signInBtn = document.getElementById('signInBtn');    
 const showPassword = document.getElementById('showPassword');
 
-const loggedInUser = {};
-
-const users = JSON.parse(localStorage.getItem('users')) || [];
+const users = LocalStorage.getLocalStorage();
 const user = {
     shifts: [],
 };
@@ -143,7 +143,7 @@ function signInUser(e) {
             console.log(users[i]);
             alert('LogIn successful!');
             e.preventDefault();
-            localStorage.setItem('users', JSON.stringify(users));
+            LocalStorage.setLocalStorage(users);
             return window.location.href = './homepage.html';
         }
     }
@@ -185,7 +185,7 @@ registerBtn.addEventListener('click', e => {
 
         if (!emailExists) {
             users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
+            LocalStorage.setLocalStorage(users);
             alert('Registration Successful');
             allFields.forEach(elem => {
                 elem.value = '';
