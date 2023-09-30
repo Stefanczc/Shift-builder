@@ -7,7 +7,10 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="../styles/homepage.css">
     <link rel="stylesheet" href="../styles/modal.css">
-    <script src="../logic/modal.js" defer></script>
+    <script type="module" src="../logic/modal.js" defer></script>
+    <script type="module" src="../logic/addShift.js" defer></script>
+    <script type="module" src="../logic/homepage.js" defer></script>
+    <!-- <script type="module" src="../logic/register.js"></script> -->
 </head>
 
 <body>
@@ -19,15 +22,31 @@
             <li><a href="">Edit profile</a></li>
             <li><a href="" id="openModalBtn">Add shift</a></li>
             <li id="usernameHello">Hello, placeholder</li>
-            <li><a href="">Logout</a></li>
+            <li id="logoutBtn"><a href="">Logout</a></li>
         </ul>
     </header>
+
+    <main>
+        <table id="table">
+            <thead id="tableHeader">
+                <tr>
+                    <th>Shift name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End time</th>
+                    <th>Hourly Wage</th>
+                    <th>Workplace</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+        </table>
+    </main>
 
     <div id="shiftModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Shift Details</h2>
-            <form id="shiftForm">
+            <form id="shiftForm" class="shiftForm">
                 <label for="shiftName">Shift Name:</label>
                 <input type="text" id="shiftName" name="shiftName" required><br>
                 <label for="date">Date:</label>

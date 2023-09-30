@@ -1,3 +1,7 @@
+:root {
+  --lightBlue: #0ab3ff;
+  --darkBlue: #1c2630;
+}
 /* Styles for the modal */
 .modal {
   display: none;
@@ -8,16 +12,28 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
-
 .modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 5px;
+  background: #29313c;
+  margin: 5% auto;
+  padding: 2em;
+  border-radius: 0.5em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 50%;
+  width: 30em;
+  color: #fff;
 }
-
+.modal-content > h2 {
+  margin-bottom: 2em;
+  text-align: center;
+}
+.shiftForm {
+  display: grid;
+  gap: 5px;
+}
+.shiftForm > input {
+  font-size: 1.25em;
+  outline: none;
+  padding-left: 0.5em;
+}
 /* Close button style */
 .close {
   float: right;
@@ -26,12 +42,18 @@
 
 /* Submit button style */
 button[type="submit"] {
-  background-color: #007bff;
+  background-color: var(--lightBlue);
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  border-radius: 0.25em;
   cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s ease-in-out;
+}
+button[type="submit"]:hover {
+  opacity: 0.7;
 }
 
 /* Position the modal in the center of the screen */

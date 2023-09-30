@@ -6,10 +6,10 @@
 }
 :root {
     --lightBlue: #0ab3ff;
-    --darkBlue: #1c2630;
+    --darkBlue: #29313c;
 }
 body {
-    background: var(--darkBlue);
+    background: black;
 }
 .navContainer {
     display: flex;
@@ -37,9 +37,43 @@ body {
     text-decoration: none;
     transition: 0.2s;
     &:hover {
-        background-color: var(--darkBlue);
+        background-color: black;
         color: var(--lightBlue);
         scale: 1.1;
     }
 }
-
+main {
+    display: grid;
+    margin-top: 5em;
+    place-items: center;
+}
+table {
+    border: 1px solid var(--lightBlue);
+    padding: 0.5em 2em;
+    border-radius: 0.15em;
+    background: var(--darkBlue);
+    color: #fff;
+}
+th {
+    border-bottom: 1px solid var(--lightBlue);
+    // border-right: 1px solid var(--lightBlue);
+    // border-left: 1px solid var(--lightBlue);
+    padding: 1em;
+    text-align: center;
+    font-size: 1.25em;
+}
+td {
+    border-bottom: 1px solid var(--lightBlue);
+    text-align: center;
+    padding: 1em;
+}
+tr {
+    &:hover {
+        color: var(--lightBlue);
+        cursor: pointer;
+    }
+}
+tr:first-of-type:hover {
+    color: #fff;
+    cursor: default;
+}

@@ -13,9 +13,12 @@ const signInForm = document.getElementById('signInForm');
 const signInBtn = document.getElementById('signInBtn');    
 const showPassword = document.getElementById('showPassword');
 
+const loggedInUser = {};
 
 const users = JSON.parse(localStorage.getItem('users')) || [];
-const user = {};
+const user = {
+    shifts: [],
+};
 
 let isValid = true;
 
@@ -136,8 +139,11 @@ function signInUser(e) {
     const password = document.getElementById('signInPassword').value;
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email && users[i].password === password) {
+            users[i].isLogged = true;
+            console.log(users[i]);
             alert('LogIn successful!');
             e.preventDefault();
+            localStorage.setItem('users', JSON.stringify(users));
             return window.location.href = './homepage.html';
         }
     }
@@ -185,6 +191,11 @@ registerBtn.addEventListener('click', e => {
                 elem.value = '';
                 elem.parentElement.classList.remove('success');
             })
+            signInForm.classList.toggle('signInForm');
+            signUpForm.classList.add('signUpFormHide');
+            let signInEmail = document.getElementById('signInEmail');
+            signInEmail.value = user.email;
+            
         }
     }
 
@@ -213,6 +224,3 @@ showPassword.addEventListener('click', (e) => {
     }
     
 })
-
-
-
