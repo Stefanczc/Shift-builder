@@ -1,28 +1,35 @@
-import { Shift } from './addShift.js'
+import { Shift } from './shift.js';
 import { LocalStorage } from './localStorage.js';
 
+// [---------------DOM Elements---------------]
 const modal = document.getElementById('shiftModal');
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.querySelector('.close');
 const shiftForm = document.getElementById('shiftForm');
+const table = document.getElementById('table');
 
-openModalBtn.addEventListener('click', (e) => {
-    e.preventDefault()
+// [---------------Event Listeners---------------]
+closeModalBtn.addEventListener('click', closeModal);
+shiftForm.addEventListener('submit', addShift);
+openModalBtn.addEventListener('click', (event) => {
+    event.preventDefault()
     modal.style.display = 'block';
 });
-
-closeModalBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
-        modal.style.display = 'none';
+        closeModal();
     }
+});
+window.addEventListener('load', () => {
+    loadAndDisplayShifts();
 });
 
 
-shiftForm.addEventListener('submit', (event) => {
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+function addShift(event) {
     event.preventDefault();
 
     const shiftName = document.getElementById('shiftName').value;
@@ -33,59 +40,28 @@ shiftForm.addEventListener('submit', (event) => {
     const workplace = document.getElementById('workplace').value;
 
     const users = LocalStorage.getLocalStorage();
-
-    const newShift = new Shift(shiftName, date, startTime, endTime, hourlyWage, workplace);
-    
     const user = users.find((elem) => elem.isLogged === true);
+    const newShift = new Shift(shiftName, date, startTime, endTime, hourlyWage, workplace);
     user.shifts.push(newShift);
-   
     LocalStorage.setLocalStorage(users);
+    updateTable(newShift);
+    closeModal();
+};
 
-    const table = document.getElementById('table');
+function updateTable(shift) {
     const row = table.insertRow(-1);
-    const nameCell = row.insertCell(0);
-    nameCell.textContent = shiftName;
-    nameCell.style.color = '#fff';
-    const dateCell = row.insertCell(1);
-    dateCell.textContent = date;
-    const startTimeCell = row.insertCell(2);
-    startTimeCell.textContent = startTime;
-    const endTimeCell = row.insertCell(3);
-    endTimeCell.textContent = endTime;
-    const hourlyWageCell = row.insertCell(4);
-    hourlyWageCell.textContent = hourlyWage;
-    const workplaceCell = row.insertCell(5);
-    workplaceCell.textContent = workplace;
-
-    modal.style.display = 'none';
-});
-
-window.addEventListener('load', () => {
-    loadAndDisplayShifts();
-});
+    row.insertCell(0).textContent = shift.shiftName;
+    row.insertCell(1).textContent = shift.date;
+    row.insertCell(2).textContent = shift.startTime;
+    row.insertCell(3).textContent = shift.endTime;
+    row.insertCell(4).textContent = shift.hourlyWage;
+    row.insertCell(5).textContent = shift.workplace;
+}
 
 function loadAndDisplayShifts() {
-    const users = LocalStorage.getLocalStorage();
-
-    // Is there a logged in user ?
-    const user = users.find((elem) => elem.isLogged === true);
-    const shifts = user.shifts;
-
-    const table = document.getElementById('table');
-
+    const activeUser = LocalStorage.getActiveUser();
+    const shifts = activeUser.shifts;
     shifts.forEach((shift) => {
-        const row = table.insertRow(-1);
-        const nameCell = row.insertCell(0);
-        nameCell.textContent = shift.shiftName;
-        const dateCell = row.insertCell(1);
-        dateCell.textContent = shift.date;
-        const startTimeCell = row.insertCell(2);
-        startTimeCell.textContent = shift.startTime;
-        const endTimeCell = row.insertCell(3);
-        endTimeCell.textContent = shift.endTime;
-        const hourlyWageCell = row.insertCell(4);
-        hourlyWageCell.textContent = shift.hourlyWage;
-        const workplaceCell = row.insertCell(5);
-        workplaceCell.textContent = shift.workplace;
+        updateTable(shift);
     });
 }

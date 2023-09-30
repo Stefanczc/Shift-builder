@@ -1,16 +1,14 @@
-const users = JSON.parse(localStorage.getItem('users'));
-const user = users.filter((elem) => elem.isLogged === true);
-const username = user[0].username;
+import { LocalStorage } from "./localStorage.js";
 
+const activeUser = LocalStorage.getActiveUser();
 const logoutBtn = document.getElementById('logoutBtn');
 
 const usernameHello = document.getElementById('usernameHello');
-usernameHello.innerText = `Hello, ${username}!`;
+usernameHello.innerText = `Hello, ${activeUser.username}!`;
 
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    user[0].isLogged = false;
-    localStorage.setItem('users', JSON.stringify(users));
+    LocalStorage.setInactiveUser();
     window.location.href = './register.html';
 })
 
