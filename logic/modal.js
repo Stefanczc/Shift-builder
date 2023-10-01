@@ -1,14 +1,16 @@
 import { Shift } from './shift.js';
 import { LocalStorage } from './localStorage.js';
 
-// [---------------DOM Elements---------------]
+// [------------------------------------DOM Elements------------------------------------]
+
 const modal = document.getElementById('shiftModal');
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.querySelector('.close');
 const shiftForm = document.getElementById('shiftForm');
 const table = document.getElementById('table');
 
-// [---------------Event Listeners---------------]
+// [------------------------------------Event Listeners------------------------------------]
+
 closeModalBtn.addEventListener('click', closeModal);
 shiftForm.addEventListener('submit', addShift);
 openModalBtn.addEventListener('click', (event) => {
@@ -24,10 +26,11 @@ window.addEventListener('load', () => {
     loadAndDisplayShifts();
 });
 
-
 function closeModal() {
     modal.style.display = 'none';
 }
+
+// [------------------------------------Add new shift------------------------------------]
 
 function addShift(event) {
     event.preventDefault();
@@ -48,6 +51,8 @@ function addShift(event) {
     closeModal();
 };
 
+// [------------------------------------Update the UI table------------------------------------]
+
 function updateTable(shift) {
     const row = table.insertRow(-1);
     row.insertCell(0).textContent = shift.shiftName;
@@ -57,6 +62,9 @@ function updateTable(shift) {
     row.insertCell(4).textContent = shift.hourlyWage;
     row.insertCell(5).textContent = shift.workplace;
 }
+
+
+// [------------------------------------Load and display from LS------------------------------------]
 
 function loadAndDisplayShifts() {
     const activeUser = LocalStorage.getActiveUser();
