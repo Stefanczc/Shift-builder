@@ -19,7 +19,14 @@ const signUpForm = document.getElementById('signUpForm'),
 
 const signInForm = document.getElementById('signInForm');
 const signInBtn = document.getElementById('signInBtn');    
+
 const showPassword = document.getElementById('showPassword');
+const signInPassword = document.getElementById('signInPassword');
+const tooltipPassword = document.getElementById('tooltipPassword');
+const tooltipRegisterPassword = document.getElementById('tooltipRegisterPassword');
+const tooltipRegisterConfirmPassword = document.getElementById('tooltipRegisterConfirmPassword');
+const showRegisterPassword = document.getElementById('showRegisterPassword');
+const showRegisterConfirmPassword = document.getElementById('showRegisterConfirmPassword');
 
 const users = LocalStorage.getLocalStorage();
 const user = new User(username, email, password.value, firstName.value, lastName.value, age.value);
@@ -44,23 +51,36 @@ loginLink.addEventListener('click', (e) => {
     signUpForm.classList.add('signUpFormHide');
 });
 signInBtn.addEventListener('click', signInUser);
+
+
+// [------------------------------------Password UI Logic------------------------------------]
+
 showPassword.addEventListener('click', (e) => {
     e.preventDefault();
-    const signInPassword = document.getElementById('signInPassword');
-    const tooltipPassword = document.getElementById('tooltipPassword');
-    
-    if (signInPassword.type === 'password') {
-        signInPassword.type = 'text'
-        tooltipPassword.innerText = 'Hide password';
+    togglePassword(signInPassword, tooltipPassword);
+});
+showRegisterPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    togglePassword(password, tooltipRegisterPassword);
+});
+showRegisterConfirmPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    togglePassword(passwordConfirm, tooltipRegisterConfirmPassword);
+});
+
+function togglePassword(field, tooltip) {
+    if (field.type === 'password') {
+        field.type = 'text';
+        tooltip.innerText = 'Hide password';
+    } else {
+        field.type = 'password';
+        tooltip.innerText = 'Show password';
     }
-    else {
-        signInPassword.type = 'password';
-        tooltipPassword.innerText = 'Show password';
-    }
-    
-})
+}
+
 
 // [------------------------------------Register process------------------------------------]
+
 registerBtn.addEventListener('click', e => {
     e.preventDefault();
 
