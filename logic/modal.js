@@ -69,7 +69,9 @@ function updateTable(shift) {
 function loadAndDisplayShifts() {
     const activeUser = LocalStorage.getActiveUser();
     const shifts = activeUser.shifts;
-    shifts.forEach((shift) => {
-        updateTable(shift);
-    });
+    if (activeUser.shifts) {
+        shifts.forEach((shift) => {
+            updateTable(shift);
+        });
+    }
 }
