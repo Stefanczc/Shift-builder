@@ -1,5 +1,4 @@
 import { LocalStorage } from "./localStorage.js";
-import { UserValidation } from "./userValidation.js";
 import { User } from "./user.js";
 import { setError } from "./validationLogic.js";
 
@@ -29,18 +28,18 @@ const showRegisterPassword = document.getElementById('showRegisterPassword');
 const showRegisterConfirmPassword = document.getElementById('showRegisterConfirmPassword');
 
 const users = LocalStorage.getLocalStorage();
-const user = new User(username, email, password.value, firstName.value, lastName.value, age.value);
+const user = new User(username.value, email.value, password.value, firstName.value, lastName.value, age.value);
 
 
 // [------------------------------------Dynamic Event Listeners------------------------------------]
 
-username.addEventListener('input', () => UserValidation.validateUsername(username, user));
-email.addEventListener('input', () => UserValidation.validateEmail(email, user));
-password.addEventListener('input', () => UserValidation.validatePassword(password, user));
-passwordConfirm.addEventListener('input', () => UserValidation.validatePasswordConfirm(password, passwordConfirm, user));
-firstName.addEventListener('input', () => UserValidation.validateFirstName(firstName, user));
-lastName.addEventListener('input', () => UserValidation.validateLastName(lastName, user));
-age.addEventListener('input', () => UserValidation.validateAge(age, user));
+username.addEventListener('input', () => user.validateUsername(username));
+email.addEventListener('input', () => user.validateEmail(email));
+password.addEventListener('input', () => user.validatePassword(password));
+passwordConfirm.addEventListener('input', () => user.validatePasswordConfirm(password, passwordConfirm));
+firstName.addEventListener('input', () => user.validateFirstName(firstName));
+lastName.addEventListener('input', () => user.validateLastName(lastName));
+age.addEventListener('input', () => user.validateAge(age));
 
 
 // [------------------------------------Navigation Listeners------------------------------------]
@@ -85,15 +84,17 @@ registerBtn.addEventListener('click', e => {
     e.preventDefault();
 
     // Validate on submit
-    UserValidation.validateUsername(username, user);
-    UserValidation.validateEmail(email, user);
-    UserValidation.validatePassword(password, user);
-    UserValidation.validatePasswordConfirm(password, passwordConfirm, user);
-    UserValidation.validateFirstName(firstName, user);
-    UserValidation.validateLastName(lastName, user);
-    UserValidation.validateAge(age, user);
+    const usernameValid = user.validateUsername(username);
+    const emailValid = user.validateEmail(email);
+    const passwordValid = user.validatePassword(password);
+    const passwordConfirmValid = user.validatePasswordConfirm(password, passwordConfirm);
+    const firstNameValid = user.validateFirstName(firstName);
+    const lastNameValid = user.validateLastName(lastName);
+    const ageValid = user.validateAge(age);
 
-    if (UserValidation.isValid) {
+
+    //all above variables true
+    if (usernameValid, emailValid, passwordValid, passwordConfirmValid, firstNameValid, lastNameValid, ageValid) {
         let emailExists = false;
         const allFields = document.querySelectorAll('input');
 

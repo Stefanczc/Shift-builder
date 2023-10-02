@@ -1,3 +1,6 @@
+// move to main.js
+
+
 class LocalStorage {
 
     static getLocalStorage() {

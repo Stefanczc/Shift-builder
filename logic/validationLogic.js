@@ -1,15 +1,11 @@
-import { UserValidation } from "./userValidation.js";
-
 // [------------------------------------Display UI Error------------------------------------]
 
 function setError(element, message) {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
-    UserValidation.isValid = false;
 }
 
 // [------------------------------------Remove UI Error------------------------------------]
@@ -17,11 +13,9 @@ function setError(element, message) {
 function setSuccess(element) {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = '';
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
-    UserValidation.isValid = true;
 }
 
 // [------------------------------------Check reg exp for emails------------------------------------]
