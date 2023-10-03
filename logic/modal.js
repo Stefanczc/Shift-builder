@@ -45,6 +45,9 @@ function addShift(event) {
     const users = LocalStorage.getLocalStorage();
     const user = users.find((elem) => elem.isLogged === true);
     const newShift = new Shift(shiftName, date, startTime, endTime, hourlyWage, workplace);
+
+    // check date to be max current date
+
     user.shifts.push(newShift);
     LocalStorage.setLocalStorage(users);
     updateTable(newShift);
@@ -61,8 +64,19 @@ function updateTable(shift) {
     row.insertCell(3).textContent = shift.endTime;
     row.insertCell(4).textContent = shift.hourlyWage;
     row.insertCell(5).textContent = shift.workplace;
-}
 
+    const startTime = new Date(shift.date + ' ' + shift.startTime);
+    const endTime = new Date(shift.date + ' ' + shift.endTime);
+    if (endTime < startTime) {
+        endTime.setDate(endTime.getDate() + 1);
+    }
+    const timeDifference = endTime - startTime;
+    const hoursWorked = timeDifference / (1000 * 60 * 60);
+    const profit = hoursWorked * shift.hourlyWage;
+
+    row.insertCell(6).textContent = profit;
+
+}
 
 // [------------------------------------Load and display from LS------------------------------------]
 
@@ -74,4 +88,10 @@ function loadAndDisplayShifts() {
             updateTable(shift);
         });
     }
+
+    for (let i = 0; i < shifts.length; i++) {
+        let myDate = new Date(shifts[i].date);
+        console.log(myDate.getMonth());
+    }
+
 }
