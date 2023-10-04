@@ -7,11 +7,12 @@
 :root {
     --lightBlue: #0ab3ff;
     --darkBlue: #29313c;
+    --darkWhite: rgb(219, 213, 213);
 }
 body {
     background: black;
 }
-// [----------------------navigation bar-------------------] //
+// [------------------------------ Navigation Bar ------------------------------] //
 .nav {
     display: flex;
     column-gap: 1em;
@@ -47,7 +48,9 @@ main {
     display: grid;
     place-items: center;
 }
-// [----------------------shifts table-------------------] //
+
+// [------------------------------ Shifts Table ------------------------------] //
+
 table {
     border: 0.15em solid var(--lightBlue);
     padding: 0.5em 2em 1.5em;
@@ -67,10 +70,10 @@ tr {
         color: var(--lightBlue);
         cursor: pointer;
     }
-}
-tr:first-of-type:hover {
-    color: #fff;
-    cursor: default;
+    &:first-of-type:hover {
+        color: #fff;
+        cursor: default;
+    }
 }
 .bestMonth-container {
     background: var(--lightBlue);
@@ -80,4 +83,60 @@ tr:first-of-type:hover {
     border-radius: 0.25em;
     color: #fff;
     text-align: center;
+}
+
+// [------------------------------ Search Inputs ------------------------------] //
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+.search-input {
+    background-color: var(--lightBlue);
+    border: none;
+    outline: none;
+    border-radius: 0.15em;
+    font-size: 1.2em;
+    padding: 0.5em;
+    color: var(--darkBlue);
+    &::placeholder {
+        color: var(--darkBlue);
+    }
+    &:first-of-type {
+        color: #fff;
+    }
+}
+input[type="date"] {
+    cursor: pointer;
+    width: 11.35em;
+}
+.search-labels {
+    color: #fff;
+    font-size: 1.05em;
+    position: relative;
+    bottom: 1.6em;
+    left: 4.75em;
+    &:last-of-type {
+        left: 4.15em;
+    }
+}
+.search-btn {
+    padding: 0.5em 2em;
+    font-size: 1.2em;
+    background-color: var(--lightBlue);
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    border-radius: 0.15em;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--darkBlue);
+        color: var(--lightBlue)
+    }
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
 }

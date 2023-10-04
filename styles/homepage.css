@@ -8,6 +8,7 @@
 :root {
   --lightBlue: #0ab3ff;
   --darkBlue: #29313c;
+  --darkWhite: rgb(219, 213, 213);
 }
 
 body {
@@ -72,7 +73,6 @@ tr:hover {
   color: var(--lightBlue);
   cursor: pointer;
 }
-
 tr:first-of-type:hover {
   color: #fff;
   cursor: default;
@@ -86,4 +86,63 @@ tr:first-of-type:hover {
   border-radius: 0.25em;
   color: #fff;
   text-align: center;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.search-input {
+  background-color: var(--lightBlue);
+  border: none;
+  outline: none;
+  border-radius: 0.15em;
+  font-size: 1.2em;
+  padding: 0.5em;
+  color: var(--darkBlue);
+}
+.search-input::placeholder {
+  color: var(--darkBlue);
+}
+.search-input:first-of-type {
+  color: #fff;
+}
+
+input[type=date] {
+  cursor: pointer;
+  width: 11.35em;
+}
+
+.search-labels {
+  color: #fff;
+  font-size: 1.05em;
+  position: relative;
+  bottom: 1.6em;
+  left: 4.75em;
+}
+.search-labels:last-of-type {
+  left: 4.15em;
+}
+
+.search-btn {
+  padding: 0.5em 2em;
+  font-size: 1.2em;
+  background-color: var(--lightBlue);
+  outline: none;
+  border: none;
+  transition: 0.5s;
+  border-radius: 0.15em;
+}
+.search-btn:hover {
+  cursor: pointer;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2em 0;
 }/*# sourceMappingURL=homepage.css.map */
