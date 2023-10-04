@@ -13,9 +13,10 @@ const signUpForm = document.getElementById('signUpForm'),
     firstName = document.getElementById('firstName'),
     lastName = document.getElementById('lastName'),
     age = document.getElementById('age'),
-    registerBtn = document.getElementById('registerBtn'),
-    loginLink = document.getElementById('loginLink');
+    registerBtn = document.getElementById('registerBtn');
 
+const navToRegisterBtn = document.getElementById('navToRegister');
+const loginLink = document.getElementById('loginLink');
 const signInForm = document.getElementById('signInForm');
 const signInBtn = document.getElementById('signInBtn');    
 
@@ -44,11 +45,17 @@ age.addEventListener('input', () => user.validateAge(age));
 
 // [------------------------------------Navigation Listeners------------------------------------]
 
-loginLink.addEventListener('click', (e) => {
+navToRegisterBtn.addEventListener('click', e => {
     e.preventDefault();
-    signInForm.classList.toggle('signInForm');
-    signUpForm.classList.add('signUpFormHide');
-});
+    signUpForm.classList.remove('formHidden');
+    signInForm.classList.add('formHidden');
+})
+loginLink.addEventListener('click', e => {
+    e.preventDefault();
+    signUpForm.classList.add('formHidden');
+    signInForm.classList.remove('formHidden');
+})
+
 signInBtn.addEventListener('click', signInUser);
 
 
