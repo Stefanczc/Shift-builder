@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Landing Page</title>
+    <link rel="icon" type="image/x-icon" href="../assets/app-icon/app-icon.svg">
     <link rel="stylesheet" href="../styles/register.css">
     <script type="module" src="../logic/user.js"></script>
     <script type="module" src="../logic/validationLogic.js"></script>
@@ -15,7 +16,7 @@
 
 <body>
 
-    <form action="" id="signUpForm" class="signUpForm">
+    <form action="" id="signUpForm" class="signUpFormHidden">
         <h2>Create your account</h2>
         <div class="input-control">
             <input type="text" id="username" placeholder="Username">
@@ -68,7 +69,12 @@
             <span class="tooltipPassword" id="tooltipPassword">Show Password</span>
         </div>
         <button value="Sign In" class="submitBtn clickBtn" id="signInBtn"> Log In </button>
-        <a href="" id="backToRegBtn" class="loginLink btn">Back to Registration</a>
+        <p class="no-account-text">Don't have an account yet ? <a href="" id="backToRegBtn"
+                class="loginLink btn">Register here!</a></p>
+        <br>
+        <p>Forgot your password ? <a href="">Reset it here!</a></p>
+
+
     </form>
 
 

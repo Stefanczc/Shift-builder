@@ -1,4 +1,6 @@
 import { LocalStorage } from "./localStorage.js";
+import { User } from "./user.js";
+import { setSuccess } from "./validationLogic.js";
 
 
 // [------------------------------------ DOM Elements ------------------------------------]
@@ -15,9 +17,9 @@ const openModalBtn = document.getElementById('editProfile');
 const closeModalBtn = document.getElementById('close');
 const editProfileLink = document.getElementById('editProfile');
 const confirmProfile = document.getElementById('confirmProfile');
+const logoutBtn = document.getElementById('logoutBtn');
 
 const activeUser = LocalStorage.getActiveUser();
-const logoutBtn = document.getElementById('logoutBtn');
 const usernameHello = document.getElementById('usernameHello');
 usernameHello.innerText = `Hello, ${activeUser.username}!`;
 
@@ -29,6 +31,11 @@ function openModal() {
     modal.style.display = 'block';
 }
 function closeModal() {
+    setSuccess(username);
+    setSuccess(email);
+    setSuccess(firstName);
+    setSuccess(lastName);
+    setSuccess(age);
     modal.style.display = 'none';
 }
 closeModalBtn.addEventListener('click', closeModal);
@@ -38,23 +45,35 @@ openModalBtn.addEventListener('click', (event) => {
 });
 window.addEventListener('click', (event) => {
     if (event.target === modal) {
+        setSuccess(username);
+        setSuccess(email);
+        setSuccess(firstName);
+        setSuccess(lastName);
+        setSuccess(age);
         closeModal();
     }
 });
 editProfileLink.addEventListener('click', populateUserDetails);
-confirmProfile.addEventListener('click', () => {
-    updatedUserDetails.username = username.value;
-    updatedUserDetails.email = email.value;
-    updatedUserDetails.password = password.value;
-    updatedUserDetails.firstName = firstName.value;
-    updatedUserDetails.lastName = lastName.value;
-    updatedUserDetails.age = age.value;
-    updateUserDetails(updatedUserDetails);
-});
+confirmProfile.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Check if all validations are true
+    if (fieldValidations()) {
+      // Your existing code to update user details
+      updatedUserDetails.username = username.value;
+      updatedUserDetails.email = email.value;
+      updatedUserDetails.firstName = firstName.value;
+      updatedUserDetails.lastName = lastName.value;
+      updatedUserDetails.age = age.value;
+      updateUserDetails(updatedUserDetails);
+    } else {
+      // Optionally, you can show an error message or handle it in some way
+      console.log("Please fix validation errors before updating user details.");
+    }
+  });
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
     LocalStorage.setInactiveUser();
-    window.location.href = './register.html';
+    window.location.href = './index.html';
 });
 searchBtn.addEventListener('click', searchShifts);
 
@@ -66,7 +85,7 @@ function populateUserDetails() {
     const user = users.find((elem) => elem.isLogged === true);
     username.value = user.username;
     email.value = user.email;
-    password.value = user.password;
+    // password.value = user.password;
     firstName.value = user.firstName;
     lastName.value = user.lastName;
     age.value = user.age;
@@ -75,7 +94,7 @@ function populateUserDetails() {
 const updatedUserDetails = {
     username: username.value,
     email: email.value,
-    password: password.value,
+    // password: password.value,
     firstName: firstName.value,
     lastName: lastName.value,
     age: age.value,
@@ -86,7 +105,26 @@ function updateUserDetails(updatedUser) {
     const index = users.findIndex((elem) => elem.isLogged === true);
     users[index] = { ...users[index], ...updatedUser };
     LocalStorage.setLocalStorage(users);
+    closeModal();
 }
+
+const user = new User(username.value, email.value, firstName.value, lastName.value, age.value);
+username.addEventListener('input', () => user.validateUsername(username));
+email.addEventListener('input', () => user.validateEmail(email));
+firstName.addEventListener('input', () => user.validateFirstName(firstName));
+lastName.addEventListener('input', () => user.validateLastName(lastName));
+age.addEventListener('input', () => user.validateAge(age));
+
+function fieldValidations() {
+    return (
+      user.validateUsername(username) &&
+      user.validateEmail(email) &&
+      user.validateFirstName(firstName) &&
+      user.validateLastName(lastName) &&
+      user.validateAge(age)
+    );
+}
+
 
 // [------------------------------------ Search Shift Logic ------------------------------------]
 
@@ -103,19 +141,10 @@ function searchShifts() {
         const shiftName = row.cells[0].textContent.toLowerCase();
         const date = row.cells[1].textContent;
 
-        // Check if Shift name matches the search text
         const matchesSearch = searchText.length === 0 || shiftName.includes(searchText);
-        console.log('search name: ', matchesSearch);
-
-        // Check if Date matches the Start Date
         const matchesStartDate = startDateText.length === 0 || date >= startDateText;
-        console.log('start date: ', matchesStartDate);
-
-        // Check if Date falls within the range
         const isWithinRange = endDateText.length === 0 || (date >= startDateText && date <= endDateText);
-        console.log('within range: ', isWithinRange);
 
-        // Display the row only if all criteria are met
         if (matchesSearch && matchesStartDate && isWithinRange) {
             row.style.display = 'table-row';
         } else {

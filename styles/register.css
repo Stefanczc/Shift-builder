@@ -109,13 +109,10 @@ form > h2 {
   margin-top: 0.2em;
 }
 
-.signInForm {
-  z-index: -1;
+.signUpFormHidden {
+  opacity: 0;
   position: absolute;
-}
-
-.signUpFormHide {
-  display: none;
+  z-index: -1;
 }
 
 .showPassword {
@@ -148,4 +145,8 @@ form > h2 {
 
 .showPassword:hover + .tooltipPassword {
   opacity: 1;
+}
+
+.no-account-text {
+  color: #fff;
 }/*# sourceMappingURL=register.css.map */

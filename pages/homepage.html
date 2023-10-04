@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <link rel="icon" type="image/x-icon" href="../assets/app-icon/app-icon.svg">
     <link rel="stylesheet" href="../styles/homepage.css">
     <link rel="stylesheet" href="../styles/modal.css">
     <script type="module" src="../logic/modal.js" defer></script>
@@ -92,28 +93,33 @@
         <div class="modal-content">
             <span class="close" id="close">&times;</span>
             <h2>Edit User Details</h2>
-            <form action="" id="signUpForm" class="signUpForm">
-                <div class="input-control">
-                    <input type="text" id="username" placeholder="Username">
+            <form action="" id="signUpForm" class="signUpForm shiftForm modalForm">
+                <div class="input-control user-input-control">
+                    <label class="user-input-label" for="username">Username</label>
+                    <input class="user-input-field" type="text" id="username" placeholder="Username">
                     <div class="error"></div>
                 </div>
-                <div class="input-control">
-                    <input type="text" id="email" placeholder="Email">
+                <div class="input-control user-input-control">
+                    <label class="user-input-label" for="email">E-mail</label>
+                    <input class="user-input-field" type="text" id="email" placeholder="Email">
                     <div class="error"></div>
                 </div>
-                <div class="input-control">
+                <!-- <div class="input-control">
                     <input type="password" id="password" placeholder="Password">
-                </div>
-                <div class="input-control">
-                    <input type="text" id="firstName" placeholder="First Name">
+                </div> -->
+                <div class="input-control user-input-control">
+                    <label class="user-input-label" for="firstName">First Name</label>
+                    <input class="user-input-field" type="text" id="firstName" placeholder="First Name">
                     <div class="error"></div>
                 </div>
-                <div class="input-control">
-                    <input type="text" id="lastName" placeholder="Last Name">
+                <div class="input-control user-input-control">
+                    <label class="user-input-label" for="lastName">Last Name</label>
+                    <input class="user-input-field" type="text" id="lastName" placeholder="Last Name">
                     <div class="error"></div>
                 </div>
-                <div class="input-control">
-                    <input type="number" id="age" placeholder="Age">
+                <div class="input-control user-input-control">
+                    <label class="user-input-label" for="age">Age</label>
+                    <input class="user-input-field" type="number" id="age" placeholder="Age">
                     <div class="error"></div>
                 </div>
                 <button class="confirmProfile" id="confirmProfile">Save Profile</button>

@@ -53,6 +53,7 @@ signInBtn.addEventListener('click', signInUser);
 
 
 // [------------------------------------Password UI Logic------------------------------------]
+
 showPassword.addEventListener('click', (e) => {
     e.preventDefault();
     togglePassword(signInPassword, tooltipPassword);
@@ -89,8 +90,6 @@ registerBtn.addEventListener('click', e => {
     const lastNameValid = user.validateLastName(lastName);
     const ageValid = user.validateAge(age);
 
-
-    //all above variables true
     if (usernameValid, emailValid, passwordValid, passwordConfirmValid, firstNameValid, lastNameValid, ageValid) {
         let emailExists = false;
         const allFields = document.querySelectorAll('input');

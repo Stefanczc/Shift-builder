@@ -97,12 +97,14 @@ form > h2 {
     font-size: 0.9em; 
     margin-top: 0.2em; 
 }
-.signInForm {
-    z-index: -1;
+// .signInForm {
+//     z-index: -1;
+//     position: absolute;
+// }
+.signUpFormHidden {
+    opacity: 0;
     position: absolute;
-}
-.signUpFormHide {
-    display: none;
+    z-index: -1;
 }
 .showPassword {
     float: right;
@@ -131,5 +133,8 @@ form > h2 {
 }
 .showPassword:hover + .tooltipPassword {
     opacity: 1;
+}
+.no-account-text {
+    color: #fff;
 }
 

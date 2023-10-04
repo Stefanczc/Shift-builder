@@ -144,4 +144,43 @@ input[type=date] {
   display: flex;
   justify-content: center;
   margin: 2em 0;
+}
+
+.user-input-control {
+  display: grid;
+  row-gap: 0.5em;
+}
+
+.user-input-field {
+  outline: none;
+  border: none;
+  padding: 0.25em;
+  font-size: 1.2em;
+}
+
+.error {
+  color: rgb(221, 83, 83);
+}
+
+.user-input-label {
+  margin-top: 1em;
+  font-size: 1.3em;
+  color: var(--lightBlue);
+}
+
+.confirmProfile {
+  margin: 0 auto;
+  margin-top: 1em;
+  background-color: var(--lightBlue);
+  color: #fff;
+  border: none;
+  font-size: 1.2em;
+  width: 10em;
+  padding: 0.5em;
+  transition: 0.5s;
+}
+.confirmProfile:hover {
+  cursor: pointer;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
 }/*# sourceMappingURL=homepage.css.map */
