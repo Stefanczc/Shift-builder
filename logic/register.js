@@ -53,7 +53,6 @@ signInBtn.addEventListener('click', signInUser);
 
 
 // [------------------------------------Password UI Logic------------------------------------]
-
 showPassword.addEventListener('click', (e) => {
     e.preventDefault();
     togglePassword(signInPassword, tooltipPassword);
@@ -76,8 +75,6 @@ function togglePassword(field, tooltip) {
         tooltip.innerText = 'Show password';
     }
 }
-
-
 // [------------------------------------Register process------------------------------------]
 
 registerBtn.addEventListener('click', e => {

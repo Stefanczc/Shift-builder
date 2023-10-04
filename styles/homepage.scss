@@ -45,14 +45,13 @@ body {
 }
 main {
     display: grid;
-    margin-top: 5em;
     place-items: center;
 }
 // [----------------------shifts table-------------------] //
 table {
-    // border: 1px solid var(--lightBlue);
+    border: 0.15em solid var(--lightBlue);
     padding: 0.5em 2em 1.5em;
-    border-radius: 0.15em;
+    border-radius: 0.25em;
     background: var(--darkBlue);
     color: #fff;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -75,7 +74,7 @@ tr:first-of-type:hover {
 }
 .bestMonth-container {
     background: var(--lightBlue);
-    width: 30em;
+    width: 35em;
     margin: 3em auto;
     padding: 1em;
     border-radius: 0.25em;
