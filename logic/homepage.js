@@ -1,26 +1,8 @@
 import { LocalStorage } from "./localStorage.js";
 
-const activeUser = LocalStorage.getActiveUser();
-const logoutBtn = document.getElementById('logoutBtn');
 
-const usernameHello = document.getElementById('usernameHello');
-usernameHello.innerText = `Hello, ${activeUser.username}!`;
+// [------------------------------------ DOM Elements ------------------------------------]
 
-logoutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    LocalStorage.setInactiveUser();
-    window.location.href = './register.html';
-})
-
-// const editProfile = document.getElementById('editProfile');
-// editProfile.addEventListener('click', openProfile);
-// function openProfile(event) {
-//     event.preventDefault();
-// }
-
-// [------------------------------------DOM Elements------------------------------------]
-
-const signUpForm = document.getElementById('signUpForm');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -34,7 +16,15 @@ const closeModalBtn = document.getElementById('close');
 const editProfileLink = document.getElementById('editProfile');
 const confirmProfile = document.getElementById('confirmProfile');
 
-// [------------------------------------Event Listeners------------------------------------]
+const activeUser = LocalStorage.getActiveUser();
+const logoutBtn = document.getElementById('logoutBtn');
+const usernameHello = document.getElementById('usernameHello');
+usernameHello.innerText = `Hello, ${activeUser.username}!`;
+
+const searchBtn = document.getElementById('searchBtn');
+
+
+// [------------------------------------ Event Listeners ------------------------------------]
 function openModal() {
     modal.style.display = 'block';
 }
@@ -51,9 +41,25 @@ window.addEventListener('click', (event) => {
         closeModal();
     }
 });
+editProfileLink.addEventListener('click', populateUserDetails);
+confirmProfile.addEventListener('click', () => {
+    updatedUserDetails.username = username.value;
+    updatedUserDetails.email = email.value;
+    updatedUserDetails.password = password.value;
+    updatedUserDetails.firstName = firstName.value;
+    updatedUserDetails.lastName = lastName.value;
+    updatedUserDetails.age = age.value;
+    updateUserDetails(updatedUserDetails);
+});
+logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    LocalStorage.setInactiveUser();
+    window.location.href = './register.html';
+});
+searchBtn.addEventListener('click', searchShifts);
 
 
-// [------------------------------------Logic------------------------------------]
+// [------------------------------------ Update User Profile Logic ------------------------------------]
 
 function populateUserDetails() {
     const users = LocalStorage.getLocalStorage();
@@ -75,35 +81,50 @@ const updatedUserDetails = {
     age: age.value,
 };
 
-
 function updateUserDetails(updatedUser) {
     const users = LocalStorage.getLocalStorage();
     const index = users.findIndex((elem) => elem.isLogged === true);
     users[index] = { ...users[index], ...updatedUser };
     LocalStorage.setLocalStorage(users);
-
-    // if (index !== -1) {
-    //     users[index] = { ...users[index], ...updatedUser };
-    //     LocalStorage.setLocalStorage(users);
-    // } else {
-    //     console.error("User not found in local storage.");
-    // }
 }
-// console.log(updateUserDetails(updatedUserDetails));
+
+// [------------------------------------ Search Shift Logic ------------------------------------]
+
+function searchShifts() {
+    const searchInput = document.getElementById('searchInput');
+    const searchText = searchInput.value.toLowerCase();
+    const tableRows = document.querySelectorAll('tr:not(:first-child)');
+    const startDateInput = document.getElementById('startDate');
+    const startDateText = startDateInput.value.toLowerCase();
+    const endDateInput = document.getElementById('endDate');
+    const endDateText = endDateInput.value.toLowerCase();
+
+    tableRows.forEach((row) => {
+        const shiftName = row.cells[0].textContent.toLowerCase();
+        const date = row.cells[1].textContent;
+
+        // Check if Shift name matches the search text
+        const matchesSearch = searchText.length === 0 || shiftName.includes(searchText);
+        console.log('search name: ', matchesSearch);
+
+        // Check if Date matches the Start Date
+        const matchesStartDate = startDateText.length === 0 || date >= startDateText;
+        console.log('start date: ', matchesStartDate);
+
+        // Check if Date falls within the range
+        const isWithinRange = endDateText.length === 0 || (date >= startDateText && date <= endDateText);
+        console.log('within range: ', isWithinRange);
+
+        // Display the row only if all criteria are met
+        if (matchesSearch && matchesStartDate && isWithinRange) {
+            row.style.display = 'table-row';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
 
 
-// updateUserDetails(updatedUserDetails);
 
-editProfileLink.addEventListener('click', populateUserDetails);
-confirmProfile.addEventListener('click', () => {
-    // Assuming updatedUserDetails is updated based on user input
-    updatedUserDetails.username = username.value;
-    updatedUserDetails.email = email.value;
-    updatedUserDetails.password = password.value;
-    updatedUserDetails.firstName = firstName.value;
-    updatedUserDetails.lastName = lastName.value;
-    updatedUserDetails.age = age.value;
 
-    updateUserDetails(updatedUserDetails);
-});
 

@@ -112,7 +112,6 @@ tr:first-of-type:hover {
 
 input[type=date] {
   cursor: pointer;
-  width: 11.35em;
 }
 
 .search-labels {

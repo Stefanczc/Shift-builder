@@ -36,12 +36,11 @@
     <!----------------------- Search Bar ----------------------->
 
     <div class="search-container">
-        <input class="search-input" type="text" placeholder="Shift name...">
+        <input class="search-input" id="searchInput" type="text" placeholder="Shift name...">
         <label class="search-labels" for="startDate">Start Date</label>
         <input class="search-input" type="date" id="startDate">
         <label class="search-labels" for="endDate">End Date</label>
         <input class="search-input" type="date" id="endDate">
-
     </div>
     <div class="button-container">
         <button class="search-btn" id="searchBtn">Search</button>
@@ -51,16 +50,14 @@
 
     <main>
         <table id="table">
-            <thead id="tableHeader">
-                <tr>
-                    <th>Shift name</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End time</th>
-                    <th>Hourly Wage</th>
-                    <th>Workplace</th>
-                    <th>Profit</th>
-                </tr>
+            <thead>
+                <th>Shift name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End time</th>
+                <th>Hourly Wage</th>
+                <th>Workplace</th>
+                <th>Profit</th>
             </thead>
         </table>
     </main>

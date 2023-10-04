@@ -99,10 +99,12 @@ function updateTable(shift) {
         updateRow(existingRow, shift);
     } else {
         const row = table.insertRow(-1);
-        fillRow(row, shift);
+        const newIndex = table.rows.length - 1; // Get the index of the newly added row
+        fillRow(row, shift, newIndex);
     }
     displayBestMonth();
 }
+
 
 function updateRow(row, shift) {
     row.cells[0].textContent = shift.shiftName;
@@ -128,7 +130,9 @@ function updateRow(row, shift) {
     });
 }
 
-function fillRow(row, shift) {
+function fillRow(row, shift, index) {
+    row.id = `row_${index}`;
+    row.dataset.shiftId = index;
     row.insertCell(0).textContent = shift.shiftName;
     row.insertCell(1).textContent = shift.date;
     row.insertCell(2).textContent = shift.startTime;
