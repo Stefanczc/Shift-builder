@@ -1,5 +1,16 @@
-/* import all css */
+/* @import url(../styles/homepage.css);
+@import url(../styles/register.css);
+@import url(../styles/modal.css); */
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 
-/* ... */
-
-/* page.scss */
+:root {
+  --lightBlue: #0ab3ff;
+  --darkBlue: #29313c;
+  --darkWhite: rgb(219, 213, 213);
+} # sourceMappingURL=global.css.map */

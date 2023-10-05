@@ -2,7 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 :root {
@@ -62,7 +63,8 @@ table {
   border-radius: 0.25em;
   background: var(--darkBlue);
   color: #fff;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 th,
@@ -113,7 +115,7 @@ tr:first-of-type:hover {
   color: #fff;
 }
 
-input[type=date] {
+input[type="date"] {
   cursor: pointer;
 }
 
@@ -212,4 +214,4 @@ input[type=date] {
   100% {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=homepage.css.map */
+} /*# sourceMappingURL=homepage.css.map */
