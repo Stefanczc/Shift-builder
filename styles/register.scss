@@ -6,12 +6,18 @@
 }
 :root {
     --lightBlue: #0ab3ff;
+    --lightBlack: #29313c;
+    --darkBlue: #1c2630;
+    --darkWhite: rgb(219, 213, 213);
 }
 body {
     display: grid;
     min-height: 100vh;
     place-items: center;
     background: #1c2630;
+    background-image: url(../assets/login-page/shift-builder-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 form {
     background: #29313c;
@@ -23,7 +29,7 @@ form {
 }
 form > h2 {
     color: #fff;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
 }
 .input-control {
     position: relative;
@@ -68,9 +74,10 @@ form > h2 {
     margin: 1em 0 2em; 
     color: #fff;
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
     &:hover {
-        letter-spacing: 0.40em;
+        background-color: var(--darkBlue);
+        color: var(--lightBlue);
     }
 }
 .loginText {
@@ -134,7 +141,70 @@ form > h2 {
     color: #fff;
 }
 .signUpForm,
-.signInForm {
-    transition: opacity 0.75s ease-in-out;
+.signInForm,
+.forgotPasswordForm {
+    transition: opacity 0.5s ease-in-out;
 }
+h4 {
+    color: #fff;
+    margin-bottom: 3em;
+}
+h5 {
+    color: #fff;
+}
+h5 > a {
+    color: var(--lightBlue);
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    &:hover {
+        color: gold;
+    }
+}
+.forgotPasswordForm {
+    transition: 0.5s ease-in-out;
+}
+.popUp-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.popupMessage {
+    background-color: var(--darkBlue);
+    position: absolute;
+    top: 25em;
+    color: #fff;
+    transition: 0.5s ease-in;
+    padding: 2em 2em 0.25em;
+    border-radius: 0.15em;
+}
+
+.popUpBtn {
+    padding: 0.5em 1em;
+    &:hover {
+        background-color: var(--lightBlack);
+    }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    bottom: 47.5%;
+    display: none;
+}
+.spinnerDisplay {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+  
+
 

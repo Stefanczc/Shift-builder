@@ -7,14 +7,16 @@
     <title>Landing Page</title>
     <link rel="icon" type="image/x-icon" href="../assets/app-icon/app-icon.svg">
     <link rel="stylesheet" href="../styles/register.css">
-    <script type="module" src="../logic/user.js"></script>
-    <script type="module" src="../logic/validationLogic.js"></script>
-    <script type="module" src="../logic/localStorage.js"></script>
-    <script type="module" src="../logic/register.js"></script>
+    <script type="module" src="../logic/user.js" defer></script>
+    <script type="module" src="../logic/validationLogic.js" defer></script>
+    <script type="module" src="../logic/localStorage.js" defer></script>
+    <script type="module" src="../logic/auth.js" defer></script>
 
 </head>
 
 <body>
+
+    <!----------------------- Registration Form ----------------------->
 
     <form action="" id="signUpForm" class="signUpForm formHidden">
         <h2>Create your account</h2>
@@ -28,17 +30,17 @@
         </div>
         <div class="input-control">
             <input type="password" id="password" placeholder="Password">
-            <div class="error"></div>
             <img class="showPassword showPasswordRegister" id="showRegisterPassword"
                 src="../assets/login-page/show-pw-icon.svg" alt="show-pw-icon">
             <span class="tooltipPassword" id="tooltipRegisterPassword">Show Password</span>
+            <div class="error"></div>
         </div>
         <div class="input-control">
             <input type="password" id="passwordConfirm" placeholder="Confirm Password">
-            <div class="error"></div>
             <img class="showPassword showPasswordRegister" id="showRegisterConfirmPassword"
                 src="../assets/login-page/show-pw-icon.svg" alt="show-pw-icon">
             <span class="tooltipPassword" id="tooltipRegisterConfirmPassword">Show Password</span>
+            <div class="error"></div>
         </div>
         <div class="input-control">
             <input type="text" id="firstName" placeholder="First Name">
@@ -58,8 +60,11 @@
         </p>
     </form>
 
+    <!----------------------- Log-in Form ----------------------->
+
     <form action="" class="signInForm" id="signInForm">
-        <h2>Add your credentials</h2>
+        <h2>Welcome to your Shift Builder!</h2>
+        <h4>I hope you had a good day at work today :)</h4>
         <div class="input-control">
             <input type="email" placeholder="Email" id="signInEmail">
         </div>
@@ -72,11 +77,41 @@
         <p class="no-account-text">Don't have an account yet ? <a href="" id="navToRegister"
                 class="loginLink btn">Register here!</a></p>
         <br>
-        <p>Forgot your password ? <a href="">Reset it here!</a></p>
-
-
+        <h5>Did you forget your password ? <a href="" id="navToResetPassword">Click here!</a></h5>
     </form>
 
+    <!----------------------- Forgot Password Form ----------------------->
+
+    <form action="" class="forgotPasswordForm formHidden" id="forgotPasswordForm">
+        <h2>Reset Password</h2>
+        <div class="input-control">
+            <input type="text" id="resetEmail" placeholder="Email">
+            <div class="error"></div>
+        </div>
+        <div id="newPasswordInput" class="input-control passwordHidden newPasswordInput">
+            <input type="password" class="passwordNew" id="passwordNew" placeholder="New Password">
+            <img class="showPassword showPasswordRegister" id="forgotRegisterPassword"
+                src="../assets/login-page/show-pw-icon.svg" alt="show-pw-icon">
+            <span class="tooltipPassword" id="tooltipForgetPassword">Show Password</span>
+            <div class="error"></div>
+        </div>
+        <button value="Sign In" class="submitBtn clickBtn" id="resetPasswordBtn"> Reset </button>
+        <h5>I remember the password now!<a href="" id="navBackToLogin"> Back to login</a></h5>
+    </form>
+
+
+    <!----------------------- General Pop-up ----------------------->
+
+    <div class="popupMessage formHidden" id="popupMessage">
+        <p class="messageText" id="messageText"></p>
+        <div class="popUp-btn-container">
+            <button id="okButton" class="clickBtn popUpBtn">Ok</button>
+        </div>
+    </div>
+
+    <!----------------------- Loading Spinner ----------------------->
+
+    <div class="spinner" id="spinner"></div>
 
 </body>
 

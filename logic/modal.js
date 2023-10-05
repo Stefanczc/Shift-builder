@@ -54,6 +54,7 @@ function addShift(event) {
     const endTime = document.getElementById('endTime').value;
     const hourlyWage = document.getElementById('hourlyWage').value;
     const workplace = document.getElementById('workplace').value;
+    const spinner = document.getElementById('spinner');
 
     const users = LocalStorage.getLocalStorage();
     const user = users.find((elem) => elem.isLogged === true);
@@ -84,10 +85,15 @@ function addShift(event) {
         user.shifts.push(newShift);
         updateTable(newShift);
     }
+    spinner.classList.add('spinnerDisplay');
 
-    LocalStorage.setLocalStorage(users);
-    displayBestMonth();
-    closeModal();
+    setTimeout(() => {
+        LocalStorage.setLocalStorage(users);
+        displayBestMonth();
+        spinner.classList.remove('spinnerDisplay');
+        closeModal();
+    }, 3000);
+    return; 
 }
 
 
@@ -227,4 +233,8 @@ function getMonthName(monthIndex) {
     return months[monthIndex];
 }
 
+
+
+
+  
 

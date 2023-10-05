@@ -1,6 +1,6 @@
 import { LocalStorage } from "./localStorage.js";
 import { User } from "./user.js";
-import { setError } from "./validationLogic.js";
+import { setError, setSuccess } from "./validationLogic.js";
 
 
 // [------------------------------------DOM Elements------------------------------------]
@@ -21,12 +21,13 @@ const signInForm = document.getElementById('signInForm');
 const signInBtn = document.getElementById('signInBtn');    
 
 const showPassword = document.getElementById('showPassword');
-const signInPassword = document.getElementById('signInPassword');
-const tooltipPassword = document.getElementById('tooltipPassword');
-const tooltipRegisterPassword = document.getElementById('tooltipRegisterPassword');
-const tooltipRegisterConfirmPassword = document.getElementById('tooltipRegisterConfirmPassword');
 const showRegisterPassword = document.getElementById('showRegisterPassword');
 const showRegisterConfirmPassword = document.getElementById('showRegisterConfirmPassword');
+const navBackToLoginBtn = document.getElementById('navBackToLogin');
+const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+const navToResetPasswordBtn = document.getElementById('navToResetPassword');
+const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+const forgotRegisterPassword = document.getElementById('forgotRegisterPassword');
 
 const users = LocalStorage.getLocalStorage();
 const user = new User(username.value, email.value, password.value, firstName.value, lastName.value, age.value);
@@ -49,46 +50,65 @@ navToRegisterBtn.addEventListener('click', e => {
     e.preventDefault();
     signUpForm.classList.remove('formHidden');
     signInForm.classList.add('formHidden');
-})
+});
 loginLink.addEventListener('click', e => {
     e.preventDefault();
     signUpForm.classList.add('formHidden');
     signInForm.classList.remove('formHidden');
-})
-
+});
+navToResetPasswordBtn.addEventListener('click', e => {
+    e.preventDefault();
+    signInForm.classList.add('formHidden');
+    forgotPasswordForm.classList.remove('formHidden');
+});
+navBackToLoginBtn.addEventListener('click', e => {
+    e.preventDefault();
+    forgotPasswordForm.classList.add('formHidden');
+    signInForm.classList.remove('formHidden');
+});
 signInBtn.addEventListener('click', signInUser);
 
 
+// [------------------------------------Password Listeners------------------------------------]
+
+resetPasswordBtn.addEventListener('click', e => {
+    e.preventDefault();
+    passwordReset();
+})
+showPassword.addEventListener('click', function () {
+    togglePassword.call(this);
+});
+showRegisterPassword.addEventListener('click', function () {
+    togglePassword.call(this);
+});
+showRegisterConfirmPassword.addEventListener('click', function () {
+    togglePassword.call(this);
+});
+
+forgotRegisterPassword.addEventListener('click', function () {
+    togglePassword.call(this);
+});
+
 // [------------------------------------Password UI Logic------------------------------------]
 
-showPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    togglePassword(signInPassword, tooltipPassword);
-});
-showRegisterPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    togglePassword(password, tooltipRegisterPassword);
-});
-showRegisterConfirmPassword.addEventListener('click', (e) => {
-    e.preventDefault();
-    togglePassword(passwordConfirm, tooltipRegisterConfirmPassword);
-});
+function togglePassword() {
+    const inputField = this.previousElementSibling;
+    const tooltip = this.nextElementSibling;
 
-function togglePassword(field, tooltip) {
-    if (field.type === 'password') {
-        field.type = 'text';
+    if (inputField.type === 'password') {
+        inputField.type = 'text';
         tooltip.innerText = 'Hide password';
     } else {
-        field.type = 'password';
+        inputField.type = 'password';
         tooltip.innerText = 'Show password';
     }
 }
+
 // [------------------------------------Register process------------------------------------]
 
 registerBtn.addEventListener('click', e => {
     e.preventDefault();
 
-    // Validate on submit
     const usernameValid = user.validateUsername(username);
     const emailValid = user.validateEmail(email);
     const passwordValid = user.validatePassword(password);
@@ -112,37 +132,101 @@ registerBtn.addEventListener('click', e => {
         if (!emailExists) {
             users.push(user);
             LocalStorage.setLocalStorage(users);
-            alert('Registration Successful');
+            openPopUpModal('Registration Successful');
             allFields.forEach(elem => {
                 elem.value = '';
                 elem.parentElement.classList.remove('success');
             });
-            signInForm.classList.toggle('signInForm');
-            signUpForm.classList.add('signUpFormHide');
-            let signInEmail = document.getElementById('signInEmail');
+            signInForm.classList.toggle('formHidden');
+            signUpForm.classList.add('formHidden');
+            const signInEmail = document.getElementById('signInEmail');
             signInEmail.value = user.email;
         }
     }
 });
 
+
 // [------------------------------------Log-in process------------------------------------]
 
 function signInUser(e) {
+    e.preventDefault();
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
+    const spinner = document.getElementById('spinner');
+
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email && users[i].password === password) {
             users[i].isLogged = true;
-            alert('LogIn successful!');
-            e.preventDefault();
-            LocalStorage.setLocalStorage(users);
-            return window.location.href = './homepage.html';
+            spinner.classList.add('spinnerDisplay');
+            setTimeout(() => {
+                LocalStorage.setLocalStorage(users);
+                window.location.href = './homepage.html';
+                spinner.classList.remove('spinnerDisplay');
+            }, 3000);
+            return; 
         }
     }
+
     e.preventDefault();
-    return alert('Incorrect Credentials');
+    openPopUpModal('Incorrect Credentials');
 }
 
+
+
+// [------------------------------------ Password reset process ------------------------------------]
+
+function passwordReset() {
+    const email = document.getElementById('resetEmail').value;
+    const newPasswordInput = document.getElementById('passwordNew');
+    const newPasswordValue = newPasswordInput.value;
+
+    const tempUser = new User('', '', newPasswordValue, '', '', '');
+
+    if (!email) {
+        return;
+    }
+
+    let existingUser = false;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email === email) {
+            existingUser = true;
+            if (existingUser && newPasswordValue.length !== 0) {
+                if (!tempUser.validatePassword(newPasswordInput)) {
+                    return; 
+                }
+                users[i].password = newPasswordValue;
+                LocalStorage.setLocalStorage(users);
+                openPopUpModal('Your password has been reset');
+                forgotPasswordForm.classList.add('formHidden');
+                signInForm.classList.remove('formHidden');
+            }
+        }
+    }
+    if (!existingUser) {
+        openPopUpModal('Hello You, your e-mail is not in our database, care to join our app?');
+        const okButton = document.getElementById('okButton'); 
+        okButton.addEventListener('click', () => {
+            forgotPasswordForm.classList.add('formHidden');
+            signUpForm.classList.remove('formHidden');
+        });
+    }
+}
+
+/// new
+
+
+function openPopUpModal(message) {
+    const popUpModal = document.getElementById('popupMessage');
+    const messageText = document.getElementById('messageText');
+    const okButton = document.getElementById('okButton'); 
+
+    messageText.innerText = message;
+    popUpModal.classList.remove('formHidden');
+
+    okButton.addEventListener('click', () => {
+        popUpModal.classList.add('formHidden');
+    });
+}
 
 
 

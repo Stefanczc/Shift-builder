@@ -10,7 +10,12 @@
     --darkWhite: rgb(219, 213, 213);
 }
 body {
-    background: black;
+    background-color: black;
+    background-image: url(../assets/login-page/shiftWage.jpg);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 20%;
+    height: 100vh;
 }
 // [------------------------------ Navigation Bar ------------------------------] //
 .nav {
@@ -34,14 +39,12 @@ body {
 }
 .nav > li > a {
     color: #fff;
-    border-radius: 0.25em;
     padding: 0.93em 0;
     text-decoration: none;
     transition: 0.2s;
     &:hover {
         background-color: black;
         color: var(--lightBlue);
-        scale: 1.1;
     }
 }
 main {
@@ -177,4 +180,25 @@ input[type="date"] {
         background-color: var(--darkBlue);
         color: var(--lightBlue);
     }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    bottom: 25%;
+    left: 47.5%;
+    display: none;
+}
+.spinnerDisplay {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
