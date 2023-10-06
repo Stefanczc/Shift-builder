@@ -3,14 +3,16 @@ import { User } from "./user.js";
 import { setSuccess } from "./validationLogic.js";
 
 
-// [------------------------------------ DOM Elements ------------------------------------]
+// [------------------------------------ DOM Elements: user ------------------------------------]
 
 const username = document.getElementById('username');
 const email = document.getElementById('email');
-const password = document.getElementById('password');
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const age = document.getElementById('age');
+
+
+// [------------------------------------ DOM Elements: modal ------------------------------------]
 
 const modal = document.getElementById('userModal');
 const openModalBtn = document.getElementById('editProfile');
@@ -18,11 +20,6 @@ const closeModalBtn = document.getElementById('close');
 const editProfileLink = document.getElementById('editProfile');
 const confirmProfile = document.getElementById('confirmProfile');
 const logoutBtn = document.getElementById('logoutBtn');
-
-const activeUser = LocalStorage.getActiveUser();
-const usernameHello = document.getElementById('usernameHello');
-usernameHello.innerText = `Hello, ${activeUser.username}!`;
-
 const searchBtn = document.getElementById('searchBtn');
 
 
@@ -56,19 +53,15 @@ window.addEventListener('click', (event) => {
 editProfileLink.addEventListener('click', populateUserDetails);
 confirmProfile.addEventListener('click', (e) => {
     e.preventDefault();
-    // Check if all validations are true
+
     if (fieldValidations()) {
-      // Your existing code to update user details
       updatedUserDetails.username = username.value;
       updatedUserDetails.email = email.value;
       updatedUserDetails.firstName = firstName.value;
       updatedUserDetails.lastName = lastName.value;
       updatedUserDetails.age = age.value;
       updateUserDetails(updatedUserDetails);
-    } else {
-      // Optionally, you can show an error message or handle it in some way
-      console.log("Please fix validation errors before updating user details.");
-    }
+    } 
   });
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -80,12 +73,16 @@ searchBtn.addEventListener('click', searchShifts);
 
 // [------------------------------------ Update User Profile Logic ------------------------------------]
 
+
+const activeUser = LocalStorage.getActiveUser();
+const usernameHello = document.getElementById('usernameHello');
+usernameHello.innerText = `Hello, ${activeUser.username}!`;
+
 function populateUserDetails() {
-    const users = LocalStorage.getLocalStorage();
+    const users = LocalStorage.getUsers();
     const user = users.find((elem) => elem.isLogged === true);
     username.value = user.username;
     email.value = user.email;
-    // password.value = user.password;
     firstName.value = user.firstName;
     lastName.value = user.lastName;
     age.value = user.age;
@@ -94,17 +91,16 @@ function populateUserDetails() {
 const updatedUserDetails = {
     username: username.value,
     email: email.value,
-    // password: password.value,
     firstName: firstName.value,
     lastName: lastName.value,
     age: age.value,
 };
 
 function updateUserDetails(updatedUser) {
-    const users = LocalStorage.getLocalStorage();
+    const users = LocalStorage.getUsers();
     const index = users.findIndex((elem) => elem.isLogged === true);
     users[index] = { ...users[index], ...updatedUser };
-    LocalStorage.setLocalStorage(users);
+    LocalStorage.setUsers(users);
     closeModal();
 }
 

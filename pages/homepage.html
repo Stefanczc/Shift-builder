@@ -51,17 +51,19 @@
     <!----------------------- Shifts Table ----------------------->
 
     <main>
-        <table id="table">
-            <thead>
-                <th>Shift name</th>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End time</th>
-                <th>Hourly Wage</th>
-                <th>Workplace</th>
-                <th>Profit</th>
-            </thead>
-        </table>
+        <div class="table-container">
+            <table id="table">
+                <thead>
+                    <th>Shift name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End time</th>
+                    <th>Hourly Wage</th>
+                    <th>Workplace</th>
+                    <th>Profit</th>
+                </thead>
+            </table>
+        </div>
     </main>
 
     <!----------------------- Shift Modal ----------------------->
@@ -82,7 +84,13 @@
                 <label for="hourlyWage">Hourly Wage:</label>
                 <input type="number" id="hourlyWage" name="hourlyWage" step="0.01" required><br>
                 <label for="workplace">Workplace:</label>
-                <input type="text" id="workplace" name="workplace" required><br>
+                <select class="workplace" id="workplace" name="workplace" required>
+                    <option value="" disabled></option>
+                    <option value="Iasi-home">Iasi-home</option>
+                    <option value="Bucuresti-office">Bucuresti-office</option>
+                    <option value="Iasi-office">Iasi-office</option>
+                    <option value="Cluj-office">Cluj-office</option>
+                </select><br>
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -105,9 +113,6 @@
                     <input class="user-input-field" type="text" id="email" placeholder="Email">
                     <div class="error"></div>
                 </div>
-                <!-- <div class="input-control">
-                    <input type="password" id="password" placeholder="Password">
-                </div> -->
                 <div class="input-control user-input-control">
                     <label class="user-input-label" for="firstName">First Name</label>
                     <input class="user-input-field" type="text" id="firstName" placeholder="First Name">
@@ -130,9 +135,15 @@
 
     <!----------------------- Loading Spinner ----------------------->
 
-    <div class="spinner" id="spinner"></div>
+    <div class="overlay" id="spinner">
+        <div class="spinner"></div>
+    </div>
 
+    <!----------------------- Footer info ----------------------->
 
+    <footer>
+        <p class="footer-content">© Copyright, Stefan Alexandru's Shift Builder</p>
+    </footer>
 
 
 </body>

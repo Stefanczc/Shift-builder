@@ -1,29 +1,32 @@
-// move to main.js
-
-
 class LocalStorage {
 
-    static getLocalStorage() {
+    static getUsers() {
         const users = JSON.parse(localStorage.getItem('users')) || [];
         return users;
     }
 
-    static setLocalStorage(users) {
+    static setUsers(users) {
         localStorage.setItem('users', JSON.stringify(users));
     }
 
     static getActiveUser() {
-        const users = this.getLocalStorage();
+        const users = this.getUsers();
         const activeUser = users.find(user => user.isLogged === true);
         return activeUser;
     }
 
     static setInactiveUser() {
-        const users = this.getLocalStorage();
+        const users = this.getUsers();
         const user = users.find(user => user.isLogged === true);
         user.isLogged = false;
-        this.setLocalStorage(users);
+        this.setUsers(users);
     }
+
+    // static getUserEmail() {
+
+    // }
+
+    // delete storage
     
 }
 

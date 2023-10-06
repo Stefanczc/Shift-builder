@@ -2,7 +2,6 @@
   --lightBlue: #0ab3ff;
   --darkBlue: #1c2630;
 }
-/* Styles for the modal */
 .modal {
   display: none;
   position: fixed;
@@ -34,13 +33,10 @@
   outline: none;
   padding-left: 0.5em;
 }
-/* Close button style */
 .close {
   float: right;
   cursor: pointer;
 }
-
-/* Submit button style */
 button[type="submit"] {
   background-color: var(--lightBlue);
   color: #fff;
@@ -56,13 +52,9 @@ button[type="submit"]:hover {
   color: var(--lightBlue);
   background-color: var(--darkBlue);
 }
-
-/* Position the modal in the center of the screen */
 .modal-content {
   position: relative;
 }
-
-/* Responsive styles */
 @media screen and (max-width: 600px) {
   .modal-content {
     width: 80%;

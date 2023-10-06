@@ -29,7 +29,7 @@ const navToResetPasswordBtn = document.getElementById('navToResetPassword');
 const resetPasswordBtn = document.getElementById('resetPasswordBtn');
 const forgotRegisterPassword = document.getElementById('forgotRegisterPassword');
 
-const users = LocalStorage.getLocalStorage();
+const users = LocalStorage.getUsers();
 const user = new User(username.value, email.value, password.value, firstName.value, lastName.value, age.value);
 
 
@@ -104,6 +104,19 @@ function togglePassword() {
     }
 }
 
+function openPopUpModal(message) {
+    const popUpModal = document.getElementById('popupMessage');
+    const messageText = document.getElementById('messageText');
+    const okButton = document.getElementById('okButton'); 
+
+    messageText.innerText = message;
+    popUpModal.classList.remove('formHidden');
+
+    okButton.addEventListener('click', () => {
+        popUpModal.classList.add('formHidden');
+    });
+}
+
 // [------------------------------------Register process------------------------------------]
 
 registerBtn.addEventListener('click', e => {
@@ -131,7 +144,7 @@ registerBtn.addEventListener('click', e => {
 
         if (!emailExists) {
             users.push(user);
-            LocalStorage.setLocalStorage(users);
+            LocalStorage.setUsers(users);
             openPopUpModal('Registration Successful');
             allFields.forEach(elem => {
                 elem.value = '';
@@ -159,7 +172,7 @@ function signInUser(e) {
             users[i].isLogged = true;
             spinner.classList.add('spinnerDisplay');
             setTimeout(() => {
-                LocalStorage.setLocalStorage(users);
+                LocalStorage.setUsers(users);
                 window.location.href = './homepage.html';
                 spinner.classList.remove('spinnerDisplay');
             }, 3000);
@@ -195,7 +208,7 @@ function passwordReset() {
                     return; 
                 }
                 users[i].password = newPasswordValue;
-                LocalStorage.setLocalStorage(users);
+                LocalStorage.setUsers(users);
                 openPopUpModal('Your password has been reset');
                 forgotPasswordForm.classList.add('formHidden');
                 signInForm.classList.remove('formHidden');
@@ -212,21 +225,9 @@ function passwordReset() {
     }
 }
 
-/// new
 
 
-function openPopUpModal(message) {
-    const popUpModal = document.getElementById('popupMessage');
-    const messageText = document.getElementById('messageText');
-    const okButton = document.getElementById('okButton'); 
 
-    messageText.innerText = message;
-    popUpModal.classList.remove('formHidden');
-
-    okButton.addEventListener('click', () => {
-        popUpModal.classList.add('formHidden');
-    });
-}
 
 
 

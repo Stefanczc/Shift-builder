@@ -56,7 +56,7 @@ function addShift(event) {
     const workplace = document.getElementById('workplace').value;
     const spinner = document.getElementById('spinner');
 
-    const users = LocalStorage.getLocalStorage();
+    const users = LocalStorage.getUsers();
     const user = users.find((elem) => elem.isLogged === true);
     const existingShiftIndex = user.shifts.findIndex(shift => shift.date === date);
 
@@ -88,11 +88,12 @@ function addShift(event) {
     spinner.classList.add('spinnerDisplay');
 
     setTimeout(() => {
-        LocalStorage.setLocalStorage(users);
+        LocalStorage.setUsers(users);
         displayBestMonth();
         spinner.classList.remove('spinnerDisplay');
         closeModal();
     }, 3000);
+    
     return; 
 }
 
@@ -105,7 +106,7 @@ function updateTable(shift) {
         updateRow(existingRow, shift);
     } else {
         const row = table.insertRow(-1);
-        const newIndex = table.rows.length - 1; // Get the index of the newly added row
+        const newIndex = table.rows.length - 1; 
         fillRow(row, shift, newIndex);
     }
     displayBestMonth();
@@ -122,13 +123,13 @@ function updateRow(row, shift) {
     shift.profit = shift.calculateProfit(); 
     row.cells[6].textContent = shift.profit;
 
-    const users = LocalStorage.getLocalStorage();
+    const users = LocalStorage.getUsers();
     const user = users.find((elem) => elem.isLogged === true);
     const existingShiftIndex = user.shifts.findIndex(s => s.date === shift.date);
 
     if (existingShiftIndex !== -1) {
         user.shifts.splice(existingShiftIndex, 1, shift);
-        LocalStorage.setLocalStorage(users);
+        LocalStorage.setUsers(users);
     }
 
     row.addEventListener('click', () => {
@@ -222,8 +223,6 @@ function displayBestMonth() {
     const bestMonthField = document.getElementById('bestMonth');
     bestMonthField.innerText = `Most profitable month was: ${getMonthName(parseInt(bestMonth))} ${bestYear}`;
 }
-
-
 
 function getMonthName(monthIndex) {
     const months = [

@@ -5,6 +5,8 @@ body {
     background-position: 0% 100%;
     background-size: 20%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 // [------------------------------ Navigation Bar ------------------------------] //
 .nav {
@@ -43,13 +45,33 @@ main {
 
 // [------------------------------ Shifts Table ------------------------------] //
 
+.table-container {
+    max-height: 50vh; 
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 0.75em;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lightBlue);
+    border-radius: 0.5em;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-track {
+    background: var(--darkWhite);
+}
+::-webkit-scrollbar-thumb:active {
+    background: var(--lightBlue);
+}
+
 table {
-    border: 0.15em solid var(--lightBlue);
     padding: 0.5em 2em 1.5em;
     border-radius: 0.25em;
     background: var(--darkBlue);
     color: #fff;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; 
 }
 th,
 td {
@@ -76,6 +98,9 @@ tr {
     color: #fff;
     text-align: center;
 }
+option:nth-of-type(1) {
+    display: none;
+}
 
 // [------------------------------ Search Inputs ------------------------------] //
 
@@ -101,7 +126,6 @@ tr {
 }
 input[type="date"] {
     cursor: pointer;
-    // width: 11.35em;
 }
 .search-labels {
     color: #fff;
@@ -130,7 +154,7 @@ input[type="date"] {
 .button-container {
     display: flex;
     justify-content: center;
-    margin: 2em 0;
+    margin-bottom: 2em;
 }
 
 // [------------------------------ Edit User Profile ------------------------------] //
@@ -171,6 +195,16 @@ input[type="date"] {
     }
 }
 
+// [------------------------------ Loading Spinner ------------------------------] //
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: var(--overlayGray);
+    position: absolute;
+    display: none;
+}
+
 .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-top: 4px solid #3498db;
@@ -179,9 +213,8 @@ input[type="date"] {
     height: 40px;
     animation: spin 1s linear infinite;
     position: absolute;
-    bottom: 25%;
-    left: 47.5%;
-    display: none;
+    bottom: 50%;
+    left: 50%;
 }
 .spinnerDisplay {
     display: block;
@@ -190,4 +223,19 @@ input[type="date"] {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+// [------------------------------ Footer  ------------------------------] //
+
+footer {
+    margin-top: auto;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+}
+.footer-content {
+    color: #fff;
+}
+.workplace {
+    font-size: 1.2em;
 }

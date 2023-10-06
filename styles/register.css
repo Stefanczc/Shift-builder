@@ -194,6 +194,14 @@ h5 > a:hover {
   background-color: var(--lightBlack);
 }
 
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: var(--overlayGray);
+  position: absolute;
+  display: none;
+}
+
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-top: 4px solid #3498db;
@@ -202,8 +210,8 @@ h5 > a:hover {
   height: 40px;
   animation: spin 1s linear infinite;
   position: absolute;
-  bottom: 47.5%;
-  display: none;
+  bottom: 50%;
+  left: 50%;
 }
 
 .spinnerDisplay {
