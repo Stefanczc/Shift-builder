@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: var(--darkBlue);
     background-image: url(../assets/login-page/shiftWage.jpg);
     background-repeat: no-repeat;
     background-position: 0% 100%;
@@ -34,7 +34,7 @@ body {
     text-decoration: none;
     transition: 0.2s;
     &:hover {
-        background-color: black;
+        background-color: var(--darkBlue);
         color: var(--lightBlue);
     }
 }
@@ -49,27 +49,11 @@ main {
     max-height: 50vh; 
     overflow-y: scroll;
 }
-::-webkit-scrollbar {
-    width: 0.75em;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--lightBlue);
-    border-radius: 0.5em;
-}
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-::-webkit-scrollbar-track {
-    background: var(--darkWhite);
-}
-::-webkit-scrollbar-thumb:active {
-    background: var(--lightBlue);
-}
-
 table {
+    min-width: 20em;
     padding: 0.5em 2em 1.5em;
     border-radius: 0.25em;
-    background: var(--darkBlue);
+    background: var(--lightBlack);
     color: #fff;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; 
 }
@@ -98,8 +82,30 @@ tr {
     color: #fff;
     text-align: center;
 }
+select {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 option:nth-of-type(1) {
     display: none;
+}
+::-webkit-scrollbar {
+    width: 0.75em;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lightBlue);
+    
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-track {
+    background: var(--darkWhite);
+}
+::-webkit-scrollbar-thumb:active {
+    background: var(--lightBlue);
+    border-radius: 0.5em;
 }
 
 // [------------------------------ Search Inputs ------------------------------] //

@@ -2,17 +2,16 @@ body {
   display: grid;
   min-height: 100vh;
   place-items: center;
-  background: #1c2630;
   background-image: url(../assets/login-page/shift-builder-bg.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
 form {
-  background: #29313c;
-  padding: 3em 5em 3em;
+  background-color: var(--darkBlue);
+  padding: 3em 4em;
   text-align: center;
-  border-radius: 1em;
+  border-radius: 0.35em;
   display: flex;
   flex-direction: column;
 }
