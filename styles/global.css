@@ -1,16 +1,13 @@
-/* @import url(../styles/homepage.css);
-@import url(../styles/register.css);
-@import url(../styles/modal.css); */
-/* * {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 :root {
   --lightBlue: #0ab3ff;
-  --darkBlue: #29313c;
+  --lightBlack: #29313c;
+  --darkBlue: #1c2630;
   --darkWhite: rgb(219, 213, 213);
-} # sourceMappingURL=global.css.map */
+}/*# sourceMappingURL=global.css.map */
