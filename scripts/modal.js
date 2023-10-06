@@ -1,5 +1,5 @@
-import { Shift } from './shift.js';
-import { LocalStorage } from './localStorage.js';
+import { Shift } from './classes/shift.js';
+import { LocalStorage } from './classes/storage.js';
 
 // [----------------------------------- DOM Elements -----------------------------------]
 
@@ -92,7 +92,7 @@ function addShift(event) {
         displayBestMonth();
         spinner.classList.remove('spinnerDisplay');
         closeModal();
-    }, 3000);
+    }, 2000);
     
     return; 
 }

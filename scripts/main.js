@@ -1,5 +1,5 @@
-import { LocalStorage } from "./localStorage.js";
-import { User } from "./user.js";
+import { LocalStorage } from "./classes/storage.js";
+import { User } from "./classes/user.js";
 import { setSuccess } from "./validationLogic.js";
 
 
@@ -73,10 +73,12 @@ searchBtn.addEventListener('click', searchShifts);
 
 // [------------------------------------ Update User Profile Logic ------------------------------------]
 
-
-const activeUser = LocalStorage.getActiveUser();
-const usernameHello = document.getElementById('usernameHello');
-usernameHello.innerText = `Hello, ${activeUser.username}!`;
+function updateUsernameHello() {
+    const activeUser = LocalStorage.getActiveUser();
+    const usernameHello = document.getElementById('usernameHello');
+    usernameHello.innerText = `Hello, ${activeUser.username}!`;
+}
+updateUsernameHello();
 
 function populateUserDetails() {
     const users = LocalStorage.getUsers();
@@ -101,7 +103,14 @@ function updateUserDetails(updatedUser) {
     const index = users.findIndex((elem) => elem.isLogged === true);
     users[index] = { ...users[index], ...updatedUser };
     LocalStorage.setUsers(users);
-    closeModal();
+    const spinner = document.getElementById('spinner');
+    spinner.classList.add('spinnerDisplay');
+    setTimeout(() => {
+        spinner.classList.remove('spinnerDisplay');
+        updateUsernameHello();
+        closeModal();
+    }, 2000);
+    
 }
 
 const user = new User(username.value, email.value, firstName.value, lastName.value, age.value);
@@ -148,6 +157,32 @@ function searchShifts() {
         }
     });
 }
+
+
+// [------------------------------------ Current Page Logic ------------------------------------]
+
+const currentPage = window.location.pathname;
+
+function changeElementColor() {
+    const homepageItem = document.getElementById('homepageItem');
+    if (currentPage === '/pages/homepage.html') {
+        homepageItem.style.color = 'var(--lightBlack)';
+        homepageItem.style.textDecoration = 'underline';
+
+        homepageItem.onmouseover = function() {
+            homepageItem.style.color = 'var(--lightBlue)';
+            homepageItem.style.textDecoration = 'none';
+        };
+          homepageItem.onmouseout = function() {
+            homepageItem.style.color = 'var(--darkBlue)'; 
+            homepageItem.style.textDecoration = 'underline';
+          };
+    } else {
+        homepageItem.style.color = 'var(--lightBlue)'; 
+    }
+  }
+
+ window.onload = changeElementColor;
 
 
 

@@ -33,6 +33,15 @@
   outline: none;
   padding-left: 0.5em;
 }
+select {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-left: 0.5em;
+}
+option:nth-of-type(1) {
+  display: none;
+}
 .close {
   float: right;
   cursor: pointer;

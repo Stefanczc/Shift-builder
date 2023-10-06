@@ -11,7 +11,6 @@ body {
 
 .nav {
   display: flex;
-  column-gap: 1em;
   background-color: var(--lightBlue);
   font-size: 1.5em;
   height: 3em;
@@ -19,18 +18,24 @@ body {
 }
 
 .nav > li {
-  color: #fff;
+  color: var(--white);
   list-style-type: none;
   display: grid;
   align-items: center;
-  width: 9em;
+  min-width: 10%;
+}
+.nav > li:nth-of-type(1) {
+  margin: 0 1em;
 }
 .nav > li:nth-of-type(5) {
   margin-left: auto;
 }
+.nav > li:nth-of-type(6) {
+  margin-left: 1em;
+}
 
 .nav > li > a {
-  color: #fff;
+  color: var(--white);
   padding: 0.93em 0;
   text-decoration: none;
   transition: 0.2s;
@@ -51,11 +56,10 @@ main {
 }
 
 table {
-  min-width: 20em;
   padding: 0.5em 2em 1.5em;
   border-radius: 0.25em;
   background: var(--lightBlack);
-  color: #fff;
+  color: var(--white);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
@@ -71,7 +75,7 @@ tr:hover {
   cursor: pointer;
 }
 tr:first-of-type:hover {
-  color: #fff;
+  color: var(--white);
   cursor: default;
 }
 
@@ -81,18 +85,8 @@ tr:first-of-type:hover {
   margin: 3em auto;
   padding: 1em;
   border-radius: 0.25em;
-  color: #fff;
+  color: var(--white);
   text-align: center;
-}
-
-select {
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-option:nth-of-type(1) {
-  display: none;
 }
 
 ::-webkit-scrollbar {
@@ -100,7 +94,7 @@ option:nth-of-type(1) {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--lightBlue);
+  background: #555;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -109,11 +103,6 @@ option:nth-of-type(1) {
 
 ::-webkit-scrollbar-track {
   background: var(--darkWhite);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: var(--lightBlue);
-  border-radius: 0.5em;
 }
 
 .search-container {
@@ -135,7 +124,7 @@ option:nth-of-type(1) {
   color: var(--darkBlue);
 }
 .search-input:first-of-type {
-  color: #fff;
+  color: var(--white);
 }
 
 input[type=date] {
@@ -143,7 +132,7 @@ input[type=date] {
 }
 
 .search-labels {
-  color: #fff;
+  color: var(--white);
   font-size: 1.05em;
   position: relative;
   bottom: 1.6em;
@@ -200,7 +189,7 @@ input[type=date] {
   margin: 0 auto;
   margin-top: 1em;
   background-color: var(--lightBlue);
-  color: #fff;
+  color: var(--white);
   border: none;
   font-size: 1.2em;
   width: 10em;
@@ -253,7 +242,7 @@ footer {
 }
 
 .footer-content {
-  color: #fff;
+  color: var(--white);
 }
 
 .workplace {

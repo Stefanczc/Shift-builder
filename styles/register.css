@@ -17,7 +17,7 @@ form {
 }
 
 form > h2 {
-  color: #fff;
+  color: var(--white);
   margin-bottom: 1.5em;
 }
 
@@ -35,7 +35,7 @@ form > h2 {
   border: none;
   border-bottom: 0.1em solid #999;
   outline: none;
-  color: #fff;
+  color: var(--white);
   font-size: 1em;
   letter-spacing: 0.05em;
 }
@@ -63,7 +63,7 @@ form > h2 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin: 1em 0 2em;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
@@ -73,7 +73,7 @@ form > h2 {
 }
 
 .loginText {
-  color: #fff;
+  color: var(--white);
 }
 
 .btn {
@@ -130,7 +130,7 @@ form > h2 {
   top: 0.66em;
   font-size: 0.75em;
   letter-spacing: 0.1em;
-  color: #fff;
+  color: var(--white);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -140,7 +140,7 @@ form > h2 {
 }
 
 .no-account-text {
-  color: #fff;
+  color: var(--white);
 }
 
 .signUpForm,
@@ -150,12 +150,12 @@ form > h2 {
 }
 
 h4 {
-  color: #fff;
+  color: var(--white);
   margin-bottom: 3em;
 }
 
 h5 {
-  color: #fff;
+  color: var(--white);
 }
 
 h5 > a {
@@ -180,7 +180,7 @@ h5 > a:hover {
   background-color: var(--darkBlue);
   position: absolute;
   top: 25em;
-  color: #fff;
+  color: var(--white);
   transition: 0.5s ease-in;
   padding: 2em 2em 0.25em;
   border-radius: 0.15em;

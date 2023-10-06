@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 :root {
@@ -10,5 +10,6 @@
   --lightBlack: #29313c;
   --darkBlue: #1c2630;
   --darkWhite: rgb(219, 213, 213);
-  --overlayGray: rgba(146, 169, 189, 0.822);
+  --overlayGray: rgba(157, 190, 219, 0.541);
+  --white: #fff;
 }/*# sourceMappingURL=global.css.map */

@@ -1,6 +1,6 @@
-import { LocalStorage } from "./localStorage.js";
-import { User } from "./user.js";
-import { setError, setSuccess } from "./validationLogic.js";
+import { LocalStorage } from "./classes/storage.js";
+import { User } from "./classes/user.js";
+import { setError } from "./validationLogic.js";
 
 
 // [------------------------------------DOM Elements------------------------------------]
@@ -175,7 +175,7 @@ function signInUser(e) {
                 LocalStorage.setUsers(users);
                 window.location.href = './homepage.html';
                 spinner.classList.remove('spinnerDisplay');
-            }, 3000);
+            }, 2000);
             return; 
         }
     }
