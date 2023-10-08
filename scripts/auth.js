@@ -71,10 +71,6 @@ signInBtn.addEventListener('click', signInUser);
 
 // [------------------------------------Password Listeners------------------------------------]
 
-resetPasswordBtn.addEventListener('click', e => {
-    e.preventDefault();
-    passwordReset();
-})
 showPassword.addEventListener('click', function () {
     togglePassword.call(this);
 });
@@ -88,6 +84,11 @@ showRegisterConfirmPassword.addEventListener('click', function () {
 forgotRegisterPassword.addEventListener('click', function () {
     togglePassword.call(this);
 });
+resetPasswordBtn.addEventListener('click', e => {
+    e.preventDefault();
+    passwordReset();
+})
+
 
 // [------------------------------------Password UI Logic------------------------------------]
 
@@ -179,9 +180,7 @@ function signInUser(e) {
             return; 
         }
     }
-
-    e.preventDefault();
-    openPopUpModal('Incorrect Credentials');
+    openPopUpModal('Your e-mail or password is incorrect!');
 }
 
 
@@ -216,14 +215,20 @@ function passwordReset() {
         }
     }
     if (!existingUser) {
-        openPopUpModal('Hello You, your e-mail is not in our database, care to join our app?');
-        const okButton = document.getElementById('okButton'); 
-        okButton.addEventListener('click', () => {
+        openPopUpModal('Hello You, your e-mail is not in our database, care to join our app ?');
+        const okButton = document.getElementById('okButton');
+        
+        function handleOkButtonClick() {
             forgotPasswordForm.classList.add('formHidden');
             signUpForm.classList.remove('formHidden');
-        });
+            okButton.removeEventListener('click', handleOkButtonClick);
+        }
+
+        okButton.addEventListener('click', handleOkButtonClick);
     }
 }
+
+
 
 
 

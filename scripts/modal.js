@@ -87,6 +87,8 @@ function addShift(event) {
     }
     spinner.classList.add('spinnerDisplay');
 
+    //add function and call inside (parameter = timeout)
+
     setTimeout(() => {
         LocalStorage.setUsers(users);
         displayBestMonth();
