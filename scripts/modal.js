@@ -10,6 +10,7 @@ const shiftForm = document.getElementById('shiftForm');
 const table = document.getElementById('table');
 
 // [----------------------------------- Event Listeners -----------------------------------]
+
 function openModal(shift) {
     document.getElementById('shiftName').value = shift.shiftName;
     document.getElementById('date').value = shift.date;
@@ -47,7 +48,6 @@ window.addEventListener('load', () => {
 
 function addShift(event) {
     event.preventDefault();
-
     const shiftName = document.getElementById('shiftName').value;
     const date = document.getElementById('date').value;
     const startTime = document.getElementById('startTime').value;
@@ -55,7 +55,6 @@ function addShift(event) {
     const hourlyWage = document.getElementById('hourlyWage').value;
     const workplace = document.getElementById('workplace').value;
     const spinner = document.getElementById('spinner');
-
     const users = LocalStorage.getUsers();
     const user = users.find((elem) => elem.isLogged === true);
     const existingShiftIndex = user.shifts.findIndex(shift => shift.date === date);
@@ -79,23 +78,26 @@ function addShift(event) {
         updatedShift.workplace = workplace;
         updatedShift.profit = updatedShift.calculateProfit();
         user.shifts.splice(existingShiftIndex, 1, updatedShift);
-        updateTable(updatedShift);
+        spinner.classList.add('spinnerDisplay');
+        updateShift(updatedShift, 2000);
+        
     } else {
         const newShift = new Shift(shiftName, date, startTime, endTime, hourlyWage, workplace);
         user.shifts.push(newShift);
-        updateTable(newShift);
+        spinner.classList.add('spinnerDisplay');
+        updateShift(newShift, 2000);
+        
     }
-    spinner.classList.add('spinnerDisplay');
 
-    //add function and call inside (parameter = timeout)
-
-    setTimeout(() => {
-        LocalStorage.setUsers(users);
-        displayBestMonth();
-        spinner.classList.remove('spinnerDisplay');
-        closeModal();
-    }, 2000);
-    
+    function updateShift(shift, timeout) {
+        setTimeout(() => {
+            LocalStorage.setUsers(users);
+            displayBestMonth();
+            spinner.classList.remove('spinnerDisplay');
+            closeModal();
+            updateTable(shift);
+        }, timeout);
+    }
     return; 
 }
 
@@ -113,7 +115,6 @@ function updateTable(shift) {
     }
     displayBestMonth();
 }
-
 
 function updateRow(row, shift) {
     row.cells[0].textContent = shift.shiftName;
@@ -168,8 +169,6 @@ function findRowByDate(date) {
     return null;
 }
 
-
-
 // [----------------------------------- Load and display from LS -----------------------------------]
 
 function loadAndDisplayShifts() {
@@ -219,9 +218,7 @@ function displayBestMonth() {
 
     const bestIndex = profits.indexOf(Math.max(...profits));
     const bestMonthAndYear = monthsAndYears[bestIndex];
-    
     const [bestYear, bestMonth] = bestMonthAndYear.split('-');
-    
     const bestMonthField = document.getElementById('bestMonth');
     bestMonthField.innerText = `Most profitable month was: ${getMonthName(parseInt(bestMonth))} ${bestYear}`;
 }

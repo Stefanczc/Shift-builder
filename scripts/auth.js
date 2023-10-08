@@ -174,7 +174,7 @@ function signInUser(e) {
             spinner.classList.add('spinnerDisplay');
             setTimeout(() => {
                 LocalStorage.setUsers(users);
-                window.location.href = 'pages/homepage.html';
+                window.location.href = 'pages/my-shifts.html';
                 spinner.classList.remove('spinnerDisplay');
             }, 2000);
             return; 

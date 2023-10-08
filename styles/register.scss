@@ -65,7 +65,7 @@ form > h2 {
     cursor: pointer;
     transition: 0.5s ease-in-out;
     &:hover {
-        background-color: var(--darkBlue);
+        background-color: var(--lightBlack);
         color: var(--lightBlue);
     }
 }

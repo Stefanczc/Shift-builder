@@ -165,7 +165,7 @@ const currentPage = window.location.pathname;
 
 function changeElementColor() {
     const homepageItem = document.getElementById('homepageItem');
-    if (currentPage === '/pages/homepage.html') {
+    if (currentPage === '/pages/my-shifts.html') {
         homepageItem.style.color = 'var(--lightBlack)';
         homepageItem.style.textDecoration = 'underline';
 
