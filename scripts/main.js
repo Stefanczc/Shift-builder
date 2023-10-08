@@ -167,15 +167,15 @@ function changeElementColor() {
     const homepageItem = document.getElementById('homepageItem');
     if (currentPage === '/pages/my-shifts.html') {
         homepageItem.style.color = 'var(--lightBlack)';
-        homepageItem.style.textDecoration = 'underline';
+        homepageItem.style.fontWeight = 'bold';
 
         homepageItem.onmouseover = function() {
             homepageItem.style.color = 'var(--lightBlue)';
-            homepageItem.style.textDecoration = 'none';
+            homepageItem.style.fontWeight = 'normal';
         };
           homepageItem.onmouseout = function() {
             homepageItem.style.color = 'var(--darkBlue)'; 
-            homepageItem.style.textDecoration = 'underline';
+            homepageItem.style.fontWeight = 'bold';
           };
     } else {
         homepageItem.style.color = 'var(--lightBlue)'; 

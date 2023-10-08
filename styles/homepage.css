@@ -29,19 +29,17 @@ body {
 }
 .nav > li:nth-of-type(4) {
   margin-left: auto;
-}
-.nav > li:nth-of-type(6) {
-  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .nav > li > a {
   color: var(--white);
   padding: 0.9em 1em;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0.3s ease-in-out;
 }
 .nav > li > a:hover {
-  background-color: var(--darkBlue);
+  background-color: var(--white);
   color: var(--lightBlue);
 }
 
@@ -61,6 +59,7 @@ body {
 }
 
 .profileList > li > a {
+  transition: 0.3s ease-in-out;
   text-decoration: none;
   color: var(--white);
   display: grid;
@@ -68,7 +67,7 @@ body {
   background-color: var(--lightBlue);
 }
 .profileList > li > a:hover {
-  background-color: var(--darkBlue);
+  background-color: var(--white);
   color: var(--lightBlue);
 }
 
