@@ -66,7 +66,7 @@ confirmProfile.addEventListener('click', (e) => {
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
     LocalStorage.setInactiveUser();
-    window.location.href = './index.html';
+    window.location.href = '/index.html';
 });
 searchBtn.addEventListener('click', searchShifts);
 
@@ -182,7 +182,10 @@ function changeElementColor() {
     }
   }
 
- window.onload = changeElementColor;
+window.onload = changeElementColor;
+ 
+
+
 
 
 

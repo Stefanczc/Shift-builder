@@ -52,7 +52,7 @@ main {
 
 .table-container {
   max-height: 50vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 table {
@@ -247,4 +247,25 @@ footer {
 
 .workplace {
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 0.9em;
+  }
+}
+@media screen and (max-width: 900px) {
+  body {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 0.6em;
+  }
 }/*# sourceMappingURL=homepage.css.map */
