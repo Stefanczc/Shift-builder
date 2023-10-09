@@ -76,7 +76,7 @@ searchBtn.addEventListener('click', searchShifts);
 function updateUsernameHello() {
     const activeUser = LocalStorage.getActiveUser();
     const usernameHello = document.getElementById('usernameHello');
-    usernameHello.innerText = `Hello, ${activeUser.username}!`;
+    usernameHello.innerText = `Hello, ${activeUser.username.trim()}!`;
 }
 updateUsernameHello();
 
@@ -183,6 +183,11 @@ function changeElementColor() {
   }
 
 window.onload = changeElementColor;
+
+
+function resetSearch() {
+    
+}
  
 
 

@@ -220,7 +220,12 @@ function displayBestMonth() {
     const bestMonthAndYear = monthsAndYears[bestIndex];
     const [bestYear, bestMonth] = bestMonthAndYear.split('-');
     const bestMonthField = document.getElementById('bestMonth');
-    bestMonthField.innerText = `Most profitable month was: ${getMonthName(parseInt(bestMonth))} ${bestYear}`;
+    const spanElement = document.createElement('span');
+    spanElement.classList.add('spanBestMonth');
+    spanElement.innerText = `${getMonthName(parseInt(bestMonth))} ${bestYear}`
+    bestMonthField.innerText = `Most profitable month was: ` 
+    bestMonthField.appendChild(spanElement);
+
 }
 
 function getMonthName(monthIndex) {
