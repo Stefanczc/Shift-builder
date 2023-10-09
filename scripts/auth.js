@@ -1,6 +1,6 @@
 import { LocalStorage } from "./classes/storage.js";
 import { User } from "./classes/user.js";
-import { setError } from "./validationLogic.js";
+import { setError } from "./validation.js";
 
 
 // [--------------------------- DOM Elements ---------------------------]
@@ -139,7 +139,7 @@ registerBtn.addEventListener('click', e => {
         for (let i = 0; i < users.length; i++) {
             if (users[i].email === user.email) {
                 emailExists = true;
-                setError(email, 'E-mail is already in use');
+                setError(email, 'E-mail is already in use!');
                 break;
             }
         }
@@ -147,7 +147,7 @@ registerBtn.addEventListener('click', e => {
         if (!emailExists) {
             users.push(user);
             LocalStorage.setUsers(users);
-            openPopUpModal('Registration Successful');
+            openPopUpModal('Registration Successful!');
             allFields.forEach(elem => {
                 elem.value = '';
                 elem.parentElement.classList.remove('success');
@@ -170,7 +170,7 @@ function signInUser(e) {
     const spinner = document.getElementById('spinner');
 
     if (email.length === 0 || password.length === 0) {
-        openPopUpModal('Please insert all your credentials');
+        openPopUpModal('Please insert your email and password!');
         return;
     }
 
@@ -186,26 +186,26 @@ function signInUser(e) {
             return; 
         }
     }
-    openPopUpModal('Your e-mail or password is incorrect!');
+    openPopUpModal('Incorrect e-mail or password!');
 }
 
 
 // [--------------------------- Password reset process ---------------------------]
 
 function passwordReset() {
-    const email = document.getElementById('resetEmail').value;
+    const resetEmail = document.getElementById('resetEmail').value;
     const newPasswordInput = document.getElementById('passwordNew');
     const newPasswordValue = newPasswordInput.value;
 
     const tempUser = new User('', '', newPasswordValue, '', '', '');
 
-    if (!email) {
+    if (!resetEmail) {
         return;
     }
 
     let existingUser = false;
     for (let i = 0; i < users.length; i++) {
-        if (users[i].email === email) {
+        if (users[i].email === resetEmail) {
             existingUser = true;
             if (existingUser && newPasswordValue.length !== 0) {
                 if (!tempUser.validatePassword(newPasswordInput)) {

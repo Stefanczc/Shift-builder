@@ -1,6 +1,6 @@
 import { LocalStorage } from "./classes/storage.js";
 import { User } from "./classes/user.js";
-import { setSuccess } from "./validationLogic.js";
+import { setSuccess } from "./validation.js";
 
 
 // [--------------------------- DOM Elements: user ---------------------------]
@@ -90,19 +90,19 @@ updateUsernameHello();
 function populateUserDetails() {
     const users = LocalStorage.getUsers();
     const user = users.find((elem) => elem.isLogged === true);
-    username.value = user.username;
-    email.value = user.email;
-    firstName.value = user.firstName;
-    lastName.value = user.lastName;
-    age.value = user.age;
+    username.value = user.username.trim();
+    email.value = user.email.trim();
+    firstName.value = user.firstName.trim();
+    lastName.value = user.lastName.trim();
+    age.value = user.age.trim();
 }
 
 const updatedUserDetails = {
-    username: username.value,
-    email: email.value,
-    firstName: firstName.value,
-    lastName: lastName.value,
-    age: age.value,
+    username: username.value.trim(),
+    email: email.value.trim(),
+    firstName: firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    age: age.value.trim(),
 };
 
 function updateUserDetails(updatedUser) {
@@ -117,7 +117,6 @@ function updateUserDetails(updatedUser) {
         updateUsernameHello();
         closeModal();
     }, 2000);
-    
 }
 
 const user = new User(username.value, email.value, firstName.value, lastName.value, age.value);

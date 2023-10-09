@@ -1,4 +1,4 @@
-import { setError, setSuccess, isValidEmail } from '../validationLogic.js';
+import { setError, setSuccess, isValidEmail } from '../validation.js';
 
 class User {
     

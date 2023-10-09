@@ -178,7 +178,7 @@ h5 > a:hover {
 
 .popupMessage {
   text-align: center;
-  min-width: 30em;
+  min-width: 32em;
   background-color: var(--lightBlack);
   position: absolute;
   top: 25em;

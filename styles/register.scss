@@ -1,5 +1,3 @@
-// [------------------------------ Authentication forms ------------------------------] //
-
 body {
     display: grid;
     min-height: 100vh;
@@ -8,6 +6,9 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+// [--------------------- Authentication forms ---------------------] //
+
 form {
     background-color: var(--darkBlue);
     padding: 3em 4em;
@@ -156,10 +157,9 @@ h5 > a {
     display: flex;
     justify-content: center;
 }
-
 .popupMessage {
     text-align: center;
-    min-width: 30em;
+    min-width: 32em;
     background-color: var(--lightBlack);
     position: absolute;
     top: 25em;
@@ -169,14 +169,12 @@ h5 > a {
     border-radius: 0.15em;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
-
 .popUpBtn {
     padding: 0.5em 1em;
     &:hover {
         background-color: var(--darkBlue);
     }
 }
-
 .overlay {
     width: 100%;
     height: 100%;
@@ -184,7 +182,6 @@ h5 > a {
     position: absolute;
     display: none;
 }
-
 .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-top: 4px solid #3498db;
@@ -199,7 +196,6 @@ h5 > a {
 .spinnerDisplay {
     display: block;
 }
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
