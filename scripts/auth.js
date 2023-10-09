@@ -3,7 +3,7 @@ import { User } from "./classes/user.js";
 import { setError } from "./validationLogic.js";
 
 
-// [------------------------------------DOM Elements------------------------------------]
+// [--------------------------- DOM Elements ---------------------------]
 
 const signUpForm = document.getElementById('signUpForm'),
     username = document.getElementById('username'),
@@ -33,7 +33,7 @@ const users = LocalStorage.getUsers();
 const user = new User(username.value, email.value, password.value, firstName.value, lastName.value, age.value);
 
 
-// [------------------------------------Dynamic Event Listeners------------------------------------]
+// [--------------------------- Dynamic Event Listeners ---------------------------]
 
 username.addEventListener('input', () => user.validateUsername(username));
 email.addEventListener('input', () => user.validateEmail(email));
@@ -44,7 +44,7 @@ lastName.addEventListener('input', () => user.validateLastName(lastName));
 age.addEventListener('input', () => user.validateAge(age));
 
 
-// [------------------------------------Navigation Listeners------------------------------------]
+// [--------------------------- Navigation Listeners ---------------------------]
 
 navToRegisterBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -69,7 +69,7 @@ navBackToLoginBtn.addEventListener('click', e => {
 signInBtn.addEventListener('click', signInUser);
 
 
-// [------------------------------------Password Listeners------------------------------------]
+// [--------------------------- Password Listeners ---------------------------]
 
 showPassword.addEventListener('click', function () {
     togglePassword.call(this);
@@ -90,7 +90,7 @@ resetPasswordBtn.addEventListener('click', e => {
 })
 
 
-// [------------------------------------Password UI Logic------------------------------------]
+// [--------------------------- Password UI Logic ---------------------------]
 
 function togglePassword() {
     const inputField = this.previousElementSibling;
@@ -118,7 +118,8 @@ function openPopUpModal(message) {
     });
 }
 
-// [------------------------------------Register process------------------------------------]
+
+// [--------------------------- Registration process ---------------------------]
 
 registerBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -160,13 +161,18 @@ registerBtn.addEventListener('click', e => {
 });
 
 
-// [------------------------------------Log-in process------------------------------------]
+// [--------------------------- Log-in process ---------------------------]
 
 function signInUser(e) {
     e.preventDefault();
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
     const spinner = document.getElementById('spinner');
+
+    if (email.length === 0 || password.length === 0) {
+        openPopUpModal('Please insert all your credentials');
+        return;
+    }
 
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email && users[i].password === password) {
@@ -184,8 +190,7 @@ function signInUser(e) {
 }
 
 
-
-// [------------------------------------ Password reset process ------------------------------------]
+// [--------------------------- Password reset process ---------------------------]
 
 function passwordReset() {
     const email = document.getElementById('resetEmail').value;
@@ -209,8 +214,13 @@ function passwordReset() {
                 users[i].password = newPasswordValue;
                 LocalStorage.setUsers(users);
                 openPopUpModal('Your password has been reset');
-                forgotPasswordForm.classList.add('formHidden');
-                signInForm.classList.remove('formHidden');
+                const okButton = document.getElementById('okButton');
+                function handleOkButtonClick() {
+                    forgotPasswordForm.classList.add('formHidden');
+                    signInForm.classList.remove('formHidden');
+                    okButton.removeEventListener('click', handleOkButtonClick);
+                }
+                okButton.addEventListener('click', handleOkButtonClick);
             }
         }
     }
@@ -227,12 +237,3 @@ function passwordReset() {
         okButton.addEventListener('click', handleOkButtonClick);
     }
 }
-
-
-
-
-
-
-
-
-

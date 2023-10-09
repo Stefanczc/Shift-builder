@@ -1,7 +1,8 @@
 import { Shift } from './classes/shift.js';
 import { LocalStorage } from './classes/storage.js';
 
-// [----------------------------------- DOM Elements -----------------------------------]
+
+// [--------------------------- DOM Elements ---------------------------]
 
 const modal = document.getElementById('shiftModal');
 const openModalBtn = document.getElementById('openModalBtn');
@@ -9,7 +10,8 @@ const closeModalBtn = document.querySelector('.close');
 const shiftForm = document.getElementById('shiftForm');
 const table = document.getElementById('table');
 
-// [----------------------------------- Event Listeners -----------------------------------]
+
+// [--------------------------- Event Listeners ---------------------------]
 
 function openModal(shift) {
     document.getElementById('shiftName').value = shift.shiftName;
@@ -44,7 +46,8 @@ window.addEventListener('load', () => {
     loadAndDisplayShifts();
 });
 
-// [----------------------------------- Add/Update shift -----------------------------------]
+
+// [--------------------------- Add/Update shift ---------------------------]
 
 function addShift(event) {
     event.preventDefault();
@@ -102,7 +105,7 @@ function addShift(event) {
 }
 
 
-// [----------------------------------- Update the UI table -----------------------------------]
+// [--------------------------- Update the UI table ---------------------------]
 
 function updateTable(shift) {
     const existingRow = findRowByDate(shift.date);
@@ -169,7 +172,8 @@ function findRowByDate(date) {
     return null;
 }
 
-// [----------------------------------- Load and display from LS -----------------------------------]
+
+// [--------------------------- Load and display from LS ---------------------------]
 
 function loadAndDisplayShifts() {
     const activeUser = LocalStorage.getActiveUser();
@@ -235,9 +239,3 @@ function getMonthName(monthIndex) {
     ];
     return months[monthIndex];
 }
-
-
-
-
-  
-

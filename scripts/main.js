@@ -3,7 +3,7 @@ import { User } from "./classes/user.js";
 import { setSuccess } from "./validationLogic.js";
 
 
-// [------------------------------------ DOM Elements: user ------------------------------------]
+// [--------------------------- DOM Elements: user ---------------------------]
 
 const username = document.getElementById('username');
 const email = document.getElementById('email');
@@ -11,13 +11,13 @@ const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const age = document.getElementById('age');
 
-// [------------------------------------ DOM Elements: modal ------------------------------------]
+// [--------------------------- DOM Elements: modal ---------------------------]
 
 const modal = document.getElementById('userModal');
 const openModalBtn = document.getElementById('editProfile');
 const closeModalBtn = document.getElementById('close');
 
-// [------------------------------------ DOM Elements: page ------------------------------------]
+// [--------------------------- DOM Elements: page ---------------------------]
 
 const editProfileLink = document.getElementById('editProfile');
 const confirmProfile = document.getElementById('confirmProfile');
@@ -26,7 +26,7 @@ const searchBtn = document.getElementById('searchBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 
-// [------------------------------------ Event Listeners ------------------------------------]
+// [--------------------------- Event Listeners ---------------------------]
 
 function openModal() {
     modal.style.display = 'block';
@@ -78,7 +78,7 @@ clearBtn.addEventListener('click', () => {
 });
 
 
-// [------------------------------------ Update User Profile Logic ------------------------------------]
+// [--------------------------- Update user profile logic ---------------------------]
 
 function updateUsernameHello() {
     const activeUser = LocalStorage.getActiveUser();
@@ -138,7 +138,7 @@ function fieldValidations() {
 }
 
 
-// [------------------------------------ Search Shift Logic ------------------------------------]
+// [--------------------------- Search shift logic ---------------------------]
 
 function searchShifts() {
     const searchInput = document.getElementById('searchInput');
@@ -165,8 +165,7 @@ function searchShifts() {
     });
 }
 
-
-// [------------------------------------ Current Page Logic ------------------------------------]
+// [--------------------------- Current page UI logic ---------------------------]
 
 const currentPage = window.location.pathname;
 
@@ -190,24 +189,3 @@ function changeElementColor() {
   }
 
 window.onload = changeElementColor;
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-

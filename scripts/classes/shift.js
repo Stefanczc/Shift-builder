@@ -22,7 +22,7 @@ class Shift {
         const hoursWorked = timeDifference / (1000 * 60 * 60);
         return parseInt(hoursWorked * this.hourlyWage);
     }
-
+    
 }
 
 export { Shift };

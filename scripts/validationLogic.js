@@ -1,4 +1,5 @@
-// [------------------------------------Display UI Error------------------------------------]
+
+// [--------------------------- Display UI Error ---------------------------]
 
 function setError(element, message) {
     const inputControl = element.parentElement;
@@ -8,7 +9,8 @@ function setError(element, message) {
     inputControl.classList.remove('success');
 }
 
-// [------------------------------------Remove UI Error------------------------------------]
+
+// [--------------------------- Remove UI Error ---------------------------]
 
 function setSuccess(element) {
     const inputControl = element.parentElement;
@@ -18,7 +20,8 @@ function setSuccess(element) {
     inputControl.classList.remove('error');
 }
 
-// [------------------------------------Check reg exp for emails------------------------------------]
+
+// [--------------------------- Check reg exp for emails ---------------------------]
 
 function isValidEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 

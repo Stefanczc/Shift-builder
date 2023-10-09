@@ -114,7 +114,7 @@ class User {
             return true;
         }
     }
-
+    
 }
 
 export { User };
