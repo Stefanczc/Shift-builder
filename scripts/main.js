@@ -11,19 +11,23 @@ const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const age = document.getElementById('age');
 
-
 // [------------------------------------ DOM Elements: modal ------------------------------------]
 
 const modal = document.getElementById('userModal');
 const openModalBtn = document.getElementById('editProfile');
 const closeModalBtn = document.getElementById('close');
+
+// [------------------------------------ DOM Elements: page ------------------------------------]
+
 const editProfileLink = document.getElementById('editProfile');
 const confirmProfile = document.getElementById('confirmProfile');
 const logoutBtn = document.getElementById('logoutBtn');
 const searchBtn = document.getElementById('searchBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 
 // [------------------------------------ Event Listeners ------------------------------------]
+
 function openModal() {
     modal.style.display = 'block';
 }
@@ -69,6 +73,9 @@ logoutBtn.addEventListener('click', (e) => {
     window.location.href = '/index.html';
 });
 searchBtn.addEventListener('click', searchShifts);
+clearBtn.addEventListener('click', () => {
+    window.location.href = '/pages/my-shifts.html';
+});
 
 
 // [------------------------------------ Update User Profile Logic ------------------------------------]
@@ -185,9 +192,17 @@ function changeElementColor() {
 window.onload = changeElementColor;
 
 
-function resetSearch() {
-    
-}
+
+
+
+
+
+
+
+
+
+
+
  
 
 

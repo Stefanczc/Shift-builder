@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
     loadAndDisplayShifts();
 });
 
-// [----------------------------------- Add new shift -----------------------------------]
+// [----------------------------------- Add/Update shift -----------------------------------]
 
 function addShift(event) {
     event.preventDefault();
