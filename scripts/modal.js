@@ -221,12 +221,14 @@ function displayBestMonth() {
     });
 
     const bestIndex = profits.indexOf(Math.max(...profits));
+    const bestProfit = profits[bestIndex];
+    console.log(bestProfit);
     const bestMonthAndYear = monthsAndYears[bestIndex];
     const [bestYear, bestMonth] = bestMonthAndYear.split('-');
     const bestMonthField = document.getElementById('bestMonth');
     const spanElement = document.createElement('span');
     spanElement.classList.add('spanBestMonth');
-    spanElement.innerText = `${getMonthName(parseInt(bestMonth))} ${bestYear}`
+    spanElement.innerText = `${getMonthName(parseInt(bestMonth))} ${bestYear} -> ${bestProfit} LEI`
     bestMonthField.innerText = `Most profitable month was: ` 
     bestMonthField.appendChild(spanElement);
 

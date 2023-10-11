@@ -21,12 +21,6 @@ class LocalStorage {
         user.isLogged = false;
         this.setUsers(users);
     }
-
-    // static getUserEmail() {
-
-    // }
-
-    // delete storage
     
 }
 
