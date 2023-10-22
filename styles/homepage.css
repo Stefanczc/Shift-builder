@@ -75,6 +75,7 @@ body {
 main {
   display: grid;
   place-items: center;
+  margin: 0 5%;
 }
 
 .table-container {
@@ -83,6 +84,7 @@ main {
 }
 
 table {
+  white-space: nowrap;
   padding: 0.5em 2em 1.5em;
   border-radius: 0.25em;
   background: var(--lightBlack);
@@ -108,7 +110,6 @@ tr:first-of-type:hover {
 
 .bestMonth-container {
   background: var(--lightBlue);
-  width: 35em;
   margin: 3em auto;
   padding: 1em;
   border-radius: 0.25em;
@@ -281,13 +282,52 @@ footer {
   font-size: 1.2em;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    font-size: 0.8em;
+@media screen and (max-width: 840px) {
+  header {
+    font-size: 0.9em;
+  }
+  .table-container {
+    overflow-x: scroll;
+    width: 100%;
   }
 }
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 0.5em;
+@media screen and (max-width: 720px) {
+  header {
+    font-size: 0.8em;
+  }
+  .bestMonth-container {
+    margin: 2em auto;
+    font-size: 0.8em;
+  }
+  .search-labels {
+    display: none;
+  }
+  .search-container {
+    margin: 0 5% 1em;
+    flex-direction: column;
+    row-gap: 1em;
+  }
+}
+@media screen and (max-width: 640px) {
+  .homepageItem {
+    display: none;
+  }
+  .nav > li {
+    min-width: 0;
+  }
+  .nav > li > a {
+    padding: 0.9em 0.25em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .bestMonth-container {
+    margin: 2em 5%;
+  }
+  .bestMonth {
+    text-wrap: wrap;
+  }
+  .logoItem {
+    visibility: hidden;
+    width: 0;
   }
 }/*# sourceMappingURL=homepage.css.map */
