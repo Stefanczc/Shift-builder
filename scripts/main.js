@@ -24,9 +24,15 @@ const confirmProfile = document.getElementById('confirmProfile');
 const logoutBtn = document.getElementById('logoutBtn');
 const searchBtn = document.getElementById('searchBtn');
 const clearBtn = document.getElementById('clearBtn');
+const usernameHello = document.getElementById('usernameHello');
+// const profileItems = document.getElementById('profileList');
 
 
 // [--------------------------- Event Listeners ---------------------------]
+
+usernameHello.addEventListener('click', (e) => {
+    e.preventDefault();
+})
 
 function openModal() {
     modal.style.display = 'block';
@@ -83,7 +89,7 @@ clearBtn.addEventListener('click', () => {
 function updateUsernameHello() {
     const activeUser = LocalStorage.getActiveUser();
     const usernameHello = document.getElementById('usernameHello');
-    usernameHello.innerText = `Hello, ${activeUser.username.trim()}!`;
+    usernameHello.innerText = `Hello, ${activeUser.firstName.trim()}!`;
 }
 updateUsernameHello();
 

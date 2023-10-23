@@ -72,8 +72,8 @@ button[type="submit"]:hover {
 
 /* [------------------------- Responsiveness  -------------------------] */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 550px) {
   .modal-content {
-    width: 50%;
+    width: 75%;
   }
 }

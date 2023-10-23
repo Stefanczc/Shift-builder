@@ -41,7 +41,7 @@ body {
         color: var(--lightBlue);
     }
 }
-.userProfile:hover + .profileList,
+.userProfile:focus + .profileList,
 .profileList:hover {
     display: grid;
 }

@@ -226,7 +226,7 @@ function displayBestMonth() {
     const bestMonthField = document.getElementById('bestMonth');
     const spanElement = document.createElement('span');
     spanElement.classList.add('spanBestMonth');
-    spanElement.innerText = `${getMonthName(parseInt(bestMonth))} ${bestYear} -> ${bestProfit} LEI`
+    spanElement.innerText = `${getMonthName(parseInt(bestMonth))} ${bestYear}: ${bestProfit} LEI`
     bestMonthField.innerText = `Most profitable month was: ` 
     bestMonthField.appendChild(spanElement);
 
