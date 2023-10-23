@@ -44,7 +44,7 @@ body {
 }
 
 .userProfile:focus + .profileList,
-.profileList:hover {
+.profileList:active {
   display: grid;
 }
 
