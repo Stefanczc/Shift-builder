@@ -89,7 +89,6 @@ function addShift(event) {
         user.shifts.push(newShift);
         spinner.classList.add('spinnerDisplay');
         updateShift(newShift, 2000);
-        
     }
 
     function updateShift(shift, timeout) {
@@ -222,7 +221,6 @@ function displayBestMonth() {
 
     const bestIndex = profits.indexOf(Math.max(...profits));
     const bestProfit = profits[bestIndex];
-    console.log(bestProfit);
     const bestMonthAndYear = monthsAndYears[bestIndex];
     const [bestYear, bestMonth] = bestMonthAndYear.split('-');
     const bestMonthField = document.getElementById('bestMonth');

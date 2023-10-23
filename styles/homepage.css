@@ -225,7 +225,7 @@ input[type=date] {
   color: var(--white);
   border: none;
   font-size: 1.2em;
-  width: 10em;
+  width: 100%;
   padding: 0.5em;
   transition: 0.5s;
 }
