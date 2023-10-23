@@ -48,5 +48,14 @@ The main request is to develop an app that would allow an employee to keep track
   $- 400px;
   $- 300px('My Shifts' page);
 
-- included box-shadows for the authenticate forms to stand out a bit
-- included box-shadows for pop-ups to make it clear and obvious for the user
+- included box-shadows for the modals and forms to stand out for the user
+- included box-shadows for pop-ups to make the message clear and obvious for the user
+
+Notes:
+
+- worked for 35hours aprox
+
+  In local storage:
+
+- saved 'users' as an array of 'user' objects
+- saved 'shifts' as an array property for the 'user' object
