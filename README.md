@@ -59,3 +59,5 @@ Notes:
 
 - saved 'users' as an array of 'user' objects
 - saved 'shifts' as an array property for the 'user' object
+
+- included in github as public repository: https://github.com/Stefanczc/Shift-builder
