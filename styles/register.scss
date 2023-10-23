@@ -201,6 +201,17 @@ h5 > a {
     100% { transform: rotate(360deg); }
 }
 
+// [------------------------- Responsiveness  -------------------------] //
+
+@media screen and (max-width: 640px) {
+    form {
+        padding: 1em 2em;
+    }
+    .popupMessage {
+        min-width: 16em;
+    }
+}
+
   
 
 

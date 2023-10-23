@@ -227,4 +227,12 @@ h5 > a:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+@media screen and (max-width: 640px) {
+  form {
+    padding: 1em 2em;
+  }
+  .popupMessage {
+    min-width: 16em;
+  }
 }/*# sourceMappingURL=register.css.map */

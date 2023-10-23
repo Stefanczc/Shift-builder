@@ -25,8 +25,6 @@ const logoutBtn = document.getElementById('logoutBtn');
 const searchBtn = document.getElementById('searchBtn');
 const clearBtn = document.getElementById('clearBtn');
 const usernameHello = document.getElementById('usernameHello');
-// const profileItems = document.getElementById('profileList');
-
 
 // [--------------------------- Event Listeners ---------------------------]
 
