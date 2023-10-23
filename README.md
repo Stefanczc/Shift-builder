@@ -48,4 +48,5 @@ The main request is to develop an app that would allow an employee to keep track
   $- 400px;
   $- 300px('My Shifts' page);
 
--
+- included box-shadows for the authenticate forms to stand out a bit
+- included box-shadows for pop-ups to make it clear and obvious for the user

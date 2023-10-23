@@ -291,9 +291,12 @@ footer {
     width: 100%;
   }
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
   header {
     font-size: 0.8em;
+  }
+  .homepageItem {
+    display: none;
   }
   .bestMonth-container {
     margin: 2em auto;
@@ -308,9 +311,10 @@ footer {
     row-gap: 1em;
   }
 }
-@media screen and (max-width: 640px) {
-  .homepageItem {
-    display: none;
+@media screen and (max-width: 650px) {
+  .logoItem {
+    visibility: hidden;
+    width: 0;
   }
   .nav > li {
     min-width: 0;
@@ -324,10 +328,6 @@ footer {
     margin: 2em 5%;
   }
   .bestMonth {
-    text-wrap: wrap;
-  }
-  .logoItem {
-    visibility: hidden;
-    width: 0;
+    word-wrap: wrap;
   }
 }/*# sourceMappingURL=homepage.css.map */
